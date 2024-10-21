@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashViewController" customModule="iOS_Avanzado_Dbz" customModuleProvider="target">
             <connections>
+                <outlet property="spinner" destination="NY3-sf-Ut2" id="ZgV-mZ-qd3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,19 +19,28 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry8-JA-OZn">
-                    <rect key="frame" x="162" y="409" width="69" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="boton"/>
-                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo2" translatesAutoresizingMaskIntoConstraints="NO" id="7z2-sS-UWE">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NY3-sf-Ut2">
+                    <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="7z2-sS-UWE" secondAttribute="bottom" id="2rP-3s-Cfs"/>
+                <constraint firstItem="7z2-sS-UWE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9ZO-mL-YBZ"/>
+                <constraint firstItem="NY3-sf-Ut2" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Agw-QM-whr"/>
+                <constraint firstItem="7z2-sS-UWE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="igO-mX-Bp8"/>
+                <constraint firstAttribute="trailing" secondItem="7z2-sS-UWE" secondAttribute="trailing" id="p96-YC-gqW"/>
+                <constraint firstItem="NY3-sf-Ut2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wSs-oc-SRe"/>
+            </constraints>
             <point key="canvasLocation" x="-21" y="-11"/>
         </view>
     </objects>
     <resources>
+        <image name="fondo2" width="1080" height="1920"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
