@@ -72,11 +72,21 @@ class LoginViewController: UIViewController {
     }
     
     private func renderError(_ reason: String) {
+        
+        
+
+
         spinner.stopAnimating()
         signInButton.isHidden = false
-        errorLabel.isHidden = false
-        errorLabel.text = reason
+        errorLabel.isHidden = true
+        
+        let alert = UIAlertController(title: "Alerta", message: "Por favor verifica tu usario y/o clave", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
 
 }
+
+
