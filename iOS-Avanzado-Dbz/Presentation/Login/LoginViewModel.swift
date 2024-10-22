@@ -17,29 +17,28 @@ enum LoginState{
 final class LoginViewModel {
     
     let onStateChanged = Binding<LoginState>()
+    private let useCase: LoginUseCaseContract
+    
+    init(useCase: LoginUseCaseContract) {
+        self.useCase = useCase
+    }
     
     func signIn(_ username: String?, _ password: String?) {
-        guard let username, validateUserName(username) else {
-            return onStateChanged.update(newValue: .error(reason: "Invalid Username"))
-        }
-        
-        guard let password, validatePassword(password) else {
-            return onStateChanged.update(newValue: .error(reason: "Invalid Password"))
-        }
         onStateChanged.update(newValue: .loading)
-        DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.onStateChanged.update(newValue: .success)
-            
+        let credentials = Credentials(userName: username ?? "", password: password ?? "")
+        useCase.execute(credentials: credentials) { [weak self] result in
+            switch result {
+                
+            case .success():
+                self?.onStateChanged.update(newValue: .success)
+            case .failure(let error):
+                self?.onStateChanged.update(newValue: .error(reason: error.reason))
+            }
         }
+  
     }
     
     
-    private func validateUserName(_ userName: String) -> Bool {
-        userName.contains("@") && !userName.isEmpty
-    }
-    
-    private func validatePassword(_ password: String) -> Bool {
-        password.count >= 5
-    }
+
     
 }

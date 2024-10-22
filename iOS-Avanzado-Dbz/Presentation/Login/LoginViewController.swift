@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: UIButton) {
         
         viewModel.signIn(userNameTextField.text, passwordTextField.text)
+        
     }
     
     private func bind() {
@@ -72,15 +73,12 @@ class LoginViewController: UIViewController {
     }
     
     private func renderError(_ reason: String) {
-        
-        
-
 
         spinner.stopAnimating()
         signInButton.isHidden = false
         errorLabel.isHidden = true
         
-        let alert = UIAlertController(title: "Alerta", message: "Por favor verifica tu usario y/o clave", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Alerta", message: reason, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
