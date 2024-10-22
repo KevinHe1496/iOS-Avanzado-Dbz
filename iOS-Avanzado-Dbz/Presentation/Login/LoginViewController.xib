@@ -54,7 +54,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJd-WL-Reb">
                                     <rect key="frame" x="0.0" y="117.99999999999999" width="321" height="34.333333333333329"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Sign in"/>
                                     <connections>
                                         <action selector="loginButton:" destination="-1" eventType="touchUpInside" id="pSw-yz-ya8"/>
                                     </connections>

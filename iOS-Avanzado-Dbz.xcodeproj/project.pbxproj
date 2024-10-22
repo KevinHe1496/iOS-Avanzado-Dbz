@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9ECA01E2CC8319B00D823BC /* KeychainSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C9B602EC2CC427410039E6CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = "iOS-Avanzado-Dbz";
 			packageProductDependencies = (
+				C9ECA01E2CC8319B00D823BC /* KeychainSwift */,
 			);
 			productName = "iOS-Avanzado-Dbz";
 			productReference = C9B602D52CC427400039E6CE /* iOS-Avanzado-Dbz.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = C9B602CC2CC427400039E6CE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C9ECA01D2CC8319B00D823BC /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C9B602D62CC427400039E6CE /* Products */;
 			projectDirPath = "";
@@ -591,6 +600,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C9ECA01D2CC8319B00D823BC /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C9ECA01E2CC8319B00D823BC /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9ECA01D2CC8319B00D823BC /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C9B602CD2CC427400039E6CE /* Project object */;
 }

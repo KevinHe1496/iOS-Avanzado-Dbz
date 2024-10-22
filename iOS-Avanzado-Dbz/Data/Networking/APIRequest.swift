@@ -29,6 +29,7 @@ protocol APIRequest {
 extension APIRequest {
     var host: String { "dragonball.keepcoding.education" }
     var queryParameters: [String: String] { [:] }
+    var headers: [String: String] { [:] }
     var body: Encodable? { nil }
     
     func getRequest() throws -> URLRequest {
@@ -51,5 +52,30 @@ extension APIRequest {
         request.allHTTPHeaderFields = ["Accept": "application/json", "Content-Type": "application/json"].merging(headers) { $1 }
         request.timeoutInterval = 10
         return request
+    }
+}
+
+
+// MARK: - Execution
+
+extension APIRequest {
+    func perform(session: APISessionContract = APISession.shared, completion: @escaping APIRequestCompletion) {
+        session.request(apiRequest: self) { result in
+            do {
+                let data = try result.get()
+                
+                if Response.self == Void.self {
+                    return completion(.success(() as! Response))
+                } else if Response.self == Data.self {
+                    return completion(.success(data as! Response))
+                }
+                
+                return try completion(.success(JSONDecoder().decode(Response.self, from: data)))
+            } catch let error as APIErrorResponse{
+                completion(.failure(error))
+            } catch {
+                completion(.failure(APIErrorResponse.unknown(path)))
+            }
+        }
     }
 }
