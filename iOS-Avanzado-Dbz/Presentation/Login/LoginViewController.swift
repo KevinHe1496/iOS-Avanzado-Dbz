@@ -51,6 +51,7 @@ class LoginViewController: UIViewController {
                 self?.renderLoading()
             case .success:
                 self?.renderSuccess()
+                self?.present(HeroesListBuilder().build(), animated: true)
             case .error(reason: let reason):
                 self?.renderError(reason)
             }

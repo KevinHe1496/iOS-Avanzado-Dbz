@@ -9,7 +9,7 @@ import Foundation
 
 
 struct LoginAPIRequest: APIRequest {
-    typealias Response = String
+    typealias Response = Data
     var headers: [String : String]
     var method: HTTPMethod = .POST
     var path: String = "/api/auth/login"
@@ -18,5 +18,6 @@ struct LoginAPIRequest: APIRequest {
         let loginData = Data(String(format: "%@:%@", credentials.userName, credentials.password).utf8)
         let base64String = loginData.base64EncodedString()
         headers = ["Authorization": "Basic \(base64String)"]
+        
     }
 }

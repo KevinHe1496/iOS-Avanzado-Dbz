@@ -21,7 +21,7 @@ struct APISession: APISessionContract {
         self.requestInterceptors = requestInterceptors
     }
     
-    func request<Request: APIRequest>(apiRequest: Request, completion: @escaping (Result<Data, any Error>) -> Void)  {
+    func request<Request: APIRequest>(apiRequest: Request, completion: @escaping (Result<Data, Error>) -> Void)  {
         
         do {
             var request = try apiRequest.getRequest()
@@ -33,7 +33,8 @@ struct APISession: APISessionContract {
                 if let error {
                     return completion(.failure(error))
                 }
-                guard let httResponse = response as? HTTPURLResponse, httResponse.statusCode == 200 else {
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    
                     return completion(.failure(APIErrorResponse.network(apiRequest.path)))
                 }
                 

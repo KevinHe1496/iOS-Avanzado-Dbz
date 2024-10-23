@@ -21,6 +21,7 @@ final class AuthenticationRequestInterceptor: APIRequestInterceptor {
     }
     func intercept(request: inout URLRequest) {
         guard let session = dataSource.getSession() else {
+            
             return
         }
         request.setValue("Bearer \(session)", forHTTPHeaderField: "Authorization")

@@ -9,31 +9,34 @@ import Foundation
 import KeychainSwift
 
 protocol SessionDataSourceContract {
-    func storeSession(_ session: String)
-    
-    func getSession() -> String?
-    
-    func deleteSession()
+    func storeSession(_ session: Data)
+    func getSession() -> Data?
+//    func getSessionAsString() -> String?  // Nuevo método para obtener la sesión como String
+   
 }
 
 
-final class SessionDataSource: SessionDataSourceContract{
+final class SessionDataSource: SessionDataSourceContract {
+    
+    private static var token: Data?
     
     
-    
-    private let token = "KToken"
-    private let keychain = KeychainSwift()
-    
-    func storeSession(_ session: String) {
-        keychain.set(session, forKey: token)
+    func storeSession(_ session: Data) {
+        SessionDataSource.token = session
     }
     
-    func getSession() -> String? {
-        keychain.get(token)
+    func getSession() -> Data? {
+        SessionDataSource.token
     }
     
-    func deleteSession() {
-        keychain.delete(token)
-    }
+//    // Nuevo método para obtener la sesión como String
+//    func getSessionAsString() -> String? {
+//        if let sessionData = getSession() {
+//            // Convertir Data a String utilizando codificación UTF-8
+//            return String(data: sessionData, encoding: .utf8)
+//        }
+//        return nil  // Retornar nil si no se pudo obtener o convertir
+//    }
     
+
 }
