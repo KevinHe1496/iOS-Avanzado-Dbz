@@ -8,18 +8,31 @@
 import Foundation
 import CoreData
 
+enum TypePersistency {
+    case disk
+    case inMemory
+}
+
 class StoreDataProvider {
     
     static var shared: StoreDataProvider = .init()
     
     private let persistentContainer: NSPersistentContainer
+    private let persistency: TypePersistency
     
     private var context: NSManagedObjectContext {
-        persistentContainer.viewContext
+        let viewContext = persistentContainer.viewContext
+        viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        return viewContext
     }
     
-    init() {
+    init(persistency: TypePersistency = .disk) {
+        self.persistency = persistency
         self.persistentContainer = NSPersistentContainer(name: "Model")
+        if self.persistency == .inMemory {
+            let persistentStore = persistentContainer.persistentStoreDescriptions.first
+            persistentStore?.url = URL(filePath: "/dev/null")
+        }
         self.persistentContainer.loadPersistentStores { _, error in
             if let error {
                 fatalError("Error loading BBDD \(error.localizedDescription)")
@@ -46,6 +59,7 @@ extension StoreDataProvider {
             let newHero = MOHero(context: context)
             newHero.id = hero.id
             newHero.name = hero.name
+            newHero.info = hero.description
             newHero.favorite = hero.favorite ?? false
             newHero.photo = hero.photo
             
@@ -53,9 +67,11 @@ extension StoreDataProvider {
         save()
     }
     
-    func fetchHeroes(filter: NSPredicate?) -> [MOHero] {
+    func fetchHeroes(filter: NSPredicate?, sortAscending: Bool = true) -> [MOHero] {
         let request = MOHero.fetchRequest()
         request.predicate = filter
+        let sortDescriptor = NSSortDescriptor(keyPath: \MOHero.name, ascending: sortAscending)
+        request.sortDescriptors = [sortDescriptor]
         do {
             return try context.fetch(request)
         } catch {
@@ -80,12 +96,12 @@ extension StoreDataProvider {
         }
     }
     
-    func add(transformations: [MOTransformation]) {
+    func add(transformations: [ApiTransformation]) {
         for transformation in transformations {
             let newTransformation = MOTransformation(context: context)
             newTransformation.id = transformation.id
             newTransformation.name = transformation.name
-            newTransformation.info = transformation.info
+            newTransformation.info = transformation.description
             newTransformation.photo = transformation.photo
             
             if let heroId = transformation.hero?.id {

@@ -10,17 +10,17 @@ import Foundation
 enum SplashState{
     case loading
     case error
-    case ready
+    case success
 }
 
 class SplashViewModel {
-    var onStateChanged = Binding<SplashState>()
+    var onStateChanged: Binding<SplashState> = Binding(.loading)
     
     func load() {
-        onStateChanged.update(newValue: .loading)
+        onStateChanged.value = .loading
         DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in
             
-            self?.onStateChanged.update(newValue: .ready)
+            self?.onStateChanged.value = .success
             
         }
     }

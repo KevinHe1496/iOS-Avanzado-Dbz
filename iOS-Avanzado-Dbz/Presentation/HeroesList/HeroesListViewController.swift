@@ -7,12 +7,14 @@
 
 import UIKit
 
-
+enum SectionHeroes{
+    case main
+}
 
 final class HeroesListViewController: UICollectionViewController {
     
     //MARK: - DataSource
-    typealias DataSource = UICollectionViewDiffableDataSource<Int, Hero>
+    typealias DataSource = UICollectionViewDiffableDataSource<SectionHeroes, Hero>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Hero>
     
     // MARK: - Model
@@ -21,11 +23,12 @@ final class HeroesListViewController: UICollectionViewController {
     private let viewModel: HeroesListViewModel
     
     //MARK: - Initializers
-    init(viewModel: HeroesListViewModel){
+    init(viewModel: HeroesListViewModel = HeroesListViewModel()){
         self.viewModel = viewModel
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 125)
         layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 10 // Espaciado entre columnas
+        layout.minimumLineSpacing = 20 // Espaciado entre filas
         super.init(collectionViewLayout: layout)
     }
     
@@ -37,22 +40,67 @@ final class HeroesListViewController: UICollectionViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Personajes"
+        configureCollecionView()
+        setBinding()
+        viewModel.loadData(filter: nil)
+    }
+    
+    func setBinding() {
+        viewModel.statusHeroes.bind { [weak self] state in
+            switch state{
+                
+            case .dateUpdated:
+                var snapshot = NSDiffableDataSourceSnapshot<SectionHeroes, Hero>()
+                snapshot.appendSections([.main])
+                snapshot.appendItems(self?.viewModel.heroes ?? [], toSection: .main)
+                self?.dataSource?.apply(snapshot)
+            case .error(let error):
+                let alert = UIAlertController(title: "Drabon Ball Z", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self?.present(alert, animated: true)
+                debugPrint("Informamos del error")
+            case .none:
+                break
+            }
+        }
+    }
+    
+    func configureCollecionView() {
+        collectionView.delegate = self
         
-        let registration = UICollectionView.CellRegistration<HeroCollectionViewCell, Hero>(cellNib: UINib(nibName: HeroCollectionViewCell.identifier, bundle: Bundle(for: type(of: self)))) { cell, indexPath, hero in
-            cell.configure(with: hero)
+        let cellRegister = UICollectionView.CellRegistration<HeroCollectionViewCell, Hero>(cellNib: UINib(nibName: HeroCollectionViewCell.identifier, bundle: nil)) { cell, indexPath, hero in
+            if let hero = self.viewModel.heroAt(index: indexPath.row) {
+                cell.nameLabel.text = hero.name
+                if let url = URL(string: hero.photo) {
+                    cell.heroImageView.setImage(url: url)
+                } else {
+                    // Maneja el caso donde la URL es inválida
+                    cell.heroImageView.image = UIImage(named: "placeholderImage")
+                }
+
+            }
+            
         }
         
-        dataSource = DataSource(collectionView: collectionView){ collectionView, indexPath, hero in
-            collectionView.dequeueConfiguredReusableCell(using: registration, for: indexPath, item: hero)
-        }
-        
-        collectionView.dataSource = dataSource
-        
-        var snapshot = Snapshot()
-        snapshot.appendSections([0])
-        snapshot.appendItems(heroes)
-        
-        dataSource?.apply(snapshot)
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, hero in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegister, for: indexPath, item: hero)
+        })
     }
 
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension HeroesListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemsPorFila: CGFloat = 2
+        let espaciado = (collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing ?? 10 * (itemsPorFila - 1)
+        let ancho = collectionView.bounds.width - espaciado
+        let anchoPorItem = ancho / itemsPorFila
+        return CGSize(width: anchoPorItem, height: anchoPorItem) // Mantén la altura igual al ancho para hacerlo cuadrado
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("estas haciendo tap")
+    }
 }

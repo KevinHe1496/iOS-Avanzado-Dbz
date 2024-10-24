@@ -9,6 +9,7 @@ import UIKit
 
 final class LoginBuilder {
     func build() -> UIViewController {
+        let viewModel = LoginViewModel()
         let viewController = LoginViewController()
         viewController.modalPresentationStyle = .fullScreen
         return viewController

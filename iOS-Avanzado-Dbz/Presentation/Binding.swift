@@ -7,19 +7,29 @@
 
 import Foundation
 
-final class Binding<State> {
+final class Binding<ObserverType> {
     
-    typealias Completion = (State) -> Void
+    private var _value: ObserverType
+    private var valueChanged: ((ObserverType) -> Void)?
     
-    var completion: Completion?
     
-    func bind(completion: @escaping Completion) {
-        self.completion = completion
+    var value: ObserverType {
+        get {
+            return _value
+        }
+        set {
+            DispatchQueue.main.async {
+                self._value = newValue
+                self.valueChanged?(self._value)
+            }
+        }
     }
     
-    func update(newValue: State) {
-        DispatchQueue.main.async { [weak self] in
-            self?.completion?(newValue)
-        }
+    init(_ value: ObserverType) {
+        self._value = value
+    }
+    
+    func bind(completion: ((ObserverType) -> Void)?) {
+        valueChanged = completion
     }
 }

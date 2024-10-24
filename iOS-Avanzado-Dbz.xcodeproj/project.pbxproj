@@ -38,6 +38,10 @@
 		C9711F022CC994F300FB479D /* ApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F012CC994F300FB479D /* ApiTransformation.swift */; };
 		C9711F052CC995F800FB479D /* StoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F032CC995F800FB479D /* StoreDataProvider.swift */; };
 		C9711F072CC99F6D00FB479D /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F062CC99F6D00FB479D /* ApiProvider.swift */; };
+		C9C34F172CCA920D00CA1E2D /* GAError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F162CCA920D00CA1E2D /* GAError.swift */; };
+		C9C34F192CCA922600CA1E2D /* GAEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F182CCA922600CA1E2D /* GAEndpoint.swift */; };
+		C9C34F1B2CCA925500CA1E2D /* GARequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1A2CCA925500CA1E2D /* GARequestBuilder.swift */; };
+		C9C34F1D2CCA954200CA1E2D /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */; };
 		C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9ECA01E2CC8319B00D823BC /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +98,11 @@
 		C9B602D52CC427400039E6CE /* iOS-Avanzado-Dbz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Avanzado-Dbz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B602EB2CC427410039E6CE /* iOS-Avanzado-DbzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Avanzado-DbzTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B602F52CC427410039E6CE /* iOS-Avanzado-DbzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Avanzado-DbzUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9C34F162CCA920D00CA1E2D /* GAError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAError.swift; sourceTree = "<group>"; };
+		C9C34F182CCA922600CA1E2D /* GAEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAEndpoint.swift; sourceTree = "<group>"; };
+		C9C34F1A2CCA925500CA1E2D /* GARequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GARequestBuilder.swift; sourceTree = "<group>"; };
+		C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCase.swift; sourceTree = "<group>"; };
+		C9C34FA62CCADC2700CA1E2D /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -105,6 +114,11 @@
 		C9B602F82CC427410039E6CE /* iOS-Avanzado-DbzUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "iOS-Avanzado-DbzUITests";
+			sourceTree = "<group>";
+		};
+		C9C34FA12CCACE4C00CA1E2D /* CustomViews */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -158,6 +172,9 @@
 		C9711E9B2CC9683500FB479D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				C9C34F162CCA920D00CA1E2D /* GAError.swift */,
+				C9C34F1A2CCA925500CA1E2D /* GARequestBuilder.swift */,
+				C9C34F182CCA922600CA1E2D /* GAEndpoint.swift */,
 				C9711F062CC99F6D00FB479D /* ApiProvider.swift */,
 			);
 			path = Networking;
@@ -194,6 +211,7 @@
 		C9711EA52CC9683500FB479D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -253,6 +271,7 @@
 		C9711EBA2CC9683500FB479D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C9C34FA12CCACE4C00CA1E2D /* CustomViews */,
 				C9711EAE2CC9683500FB479D /* HeroesList */,
 				C9711EB32CC9683500FB479D /* Login */,
 				C9711EB82CC9683500FB479D /* Splash */,
@@ -328,6 +347,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C9C34FA12CCACE4C00CA1E2D /* CustomViews */,
 			);
 			name = "iOS-Avanzado-Dbz";
 			packageProductDependencies = (
@@ -469,10 +491,12 @@
 				C9711ECB2CC9683500FB479D /* SessionDataSource.swift in Sources */,
 				C9711F022CC994F300FB479D /* ApiTransformation.swift in Sources */,
 				C9711F052CC995F800FB479D /* StoreDataProvider.swift in Sources */,
+				C9C34F192CCA922600CA1E2D /* GAEndpoint.swift in Sources */,
 				C9711EFE2CC9907800FB479D /* ApiHero.swift in Sources */,
 				C9711ED22CC9683500FB479D /* Credentials.swift in Sources */,
 				C9711ED32CC9683500FB479D /* Hero.swift in Sources */,
 				C9711F002CC990E300FB479D /* ApiLocation.swift in Sources */,
+				C9C34F172CCA920D00CA1E2D /* GAError.swift in Sources */,
 				C9711EF62CC96A6400FB479D /* MOHero+CoreDataClass.swift in Sources */,
 				C9711EF82CC96A6400FB479D /* MOLocation+CoreDataClass.swift in Sources */,
 				C9711EFA2CC96A6400FB479D /* MOTransformation+CoreDataClass.swift in Sources */,
@@ -480,8 +504,10 @@
 				C9711ED72CC9683500FB479D /* HeroesListBuilder.swift in Sources */,
 				C9711ED82CC9683500FB479D /* HeroesListViewController.swift in Sources */,
 				C9711ED92CC9683500FB479D /* HeroesListViewModel.swift in Sources */,
+				C9C34F1B2CCA925500CA1E2D /* GARequestBuilder.swift in Sources */,
 				C9711EDA2CC9683500FB479D /* LoginBuilder.swift in Sources */,
 				C9711EDB2CC9683500FB479D /* LoginViewController.swift in Sources */,
+				C9C34F1D2CCA954200CA1E2D /* HeroUseCase.swift in Sources */,
 				C9711EDC2CC9683500FB479D /* LoginViewModel.swift in Sources */,
 				C9711EDD2CC9683500FB479D /* SplashBuilder.swift in Sources */,
 				C9711EDE2CC9683500FB479D /* SplashViewController.swift in Sources */,
@@ -867,9 +893,10 @@
 		C9711E8D2CC9683500FB479D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C9C34FA62CCADC2700CA1E2D /* Model 2.xcdatamodel */,
 				C9711EC32CC9683500FB479D /* Model.xcdatamodel */,
 			);
-			currentVersion = C9711EC32CC9683500FB479D /* Model.xcdatamodel */;
+			currentVersion = C9C34FA62CCADC2700CA1E2D /* Model 2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

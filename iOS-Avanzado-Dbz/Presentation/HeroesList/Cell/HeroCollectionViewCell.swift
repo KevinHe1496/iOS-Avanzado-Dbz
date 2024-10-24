@@ -13,13 +13,19 @@ final class HeroCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: HeroCollectionViewCell.self)
     
     //MARK: - Outlets
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var heroImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    // MARK: - Configuration
-    
-    func configure(with hero: Hero) {
-        nameLabel.text = hero.name
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        stackView.backgroundColor = .systemOrange
+        stackView.layer.cornerRadius = 10
+        stackView.layer.masksToBounds = true 
+
+        
     }
     
+
 }

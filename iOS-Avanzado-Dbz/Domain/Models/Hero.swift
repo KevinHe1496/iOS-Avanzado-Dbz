@@ -8,18 +8,18 @@
 import Foundation
 
 struct Hero: Equatable, Decodable, Hashable {
-    let identifier: String
+    let id: String
     let name: String
-    let description: String
+    let info: String
     let photo: String
     let favorite: Bool
     
-    enum CondingKeys: String, CodingKey{
-        case identifier = "id"
-        case name
-        case description
-        case photo
-        case favorite
-        
+    
+    init(moHero: MOHero) {
+        self.id = moHero.id ?? ""
+        self.name = moHero.name ?? ""
+        self.info = moHero.info ?? ""
+        self.photo = moHero.photo ?? ""
+        self.favorite = moHero.favorite
     }
 }

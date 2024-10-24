@@ -33,24 +33,27 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        let apiProvider = ApiProvider()
-        
-        apiProvider.loadHeroes { result in
-            switch result{
-                
-            case .success(let hero):
-                debugPrint(hero)
-            case .failure(let error):
-                debugPrint(error)
-            }
-        }
+//        let apiProvider = ApiProvider()
+//        
+//        apiProvider.loadHeroes { result in
+//            switch result{
+//                
+//            case .success(let heros):
+//                
+//                StoreDataProvider.shared.add(heroes: heros)
+//                let bdHeroes = StoreDataProvider.shared.fetchHeroes(filter: nil)
+//                debugPrint(bdHeroes)
+//            case .failure(let error):
+//                debugPrint(error)
+//            }
+//        }
         
     }
     
     
     @IBAction func loginButton(_ sender: UIButton) {
         
-       
+        present(HeroesListBuilder().build(), animated: true)
         
     }
     
