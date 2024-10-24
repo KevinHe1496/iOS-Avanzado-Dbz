@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9711EC42CC9683500FB479D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9711E8D2CC9683500FB479D /* Model.xcdatamodeld */; };
+		C9711ECB2CC9683500FB479D /* SessionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711E952CC9683500FB479D /* SessionDataSource.swift */; };
+		C9711ED22CC9683500FB479D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA02CC9683500FB479D /* Credentials.swift */; };
+		C9711ED32CC9683500FB479D /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA12CC9683500FB479D /* Hero.swift */; };
+		C9711ED62CC9683500FB479D /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA72CC9683500FB479D /* HeroCollectionViewCell.swift */; };
+		C9711ED72CC9683500FB479D /* HeroesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EAA2CC9683500FB479D /* HeroesListBuilder.swift */; };
+		C9711ED82CC9683500FB479D /* HeroesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EAB2CC9683500FB479D /* HeroesListViewController.swift */; };
+		C9711ED92CC9683500FB479D /* HeroesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EAD2CC9683500FB479D /* HeroesListViewModel.swift */; };
+		C9711EDA2CC9683500FB479D /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EAF2CC9683500FB479D /* LoginBuilder.swift */; };
+		C9711EDB2CC9683500FB479D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EB02CC9683500FB479D /* LoginViewController.swift */; };
+		C9711EDC2CC9683500FB479D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EB22CC9683500FB479D /* LoginViewModel.swift */; };
+		C9711EDD2CC9683500FB479D /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EB42CC9683500FB479D /* SplashBuilder.swift */; };
+		C9711EDE2CC9683500FB479D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EB52CC9683500FB479D /* SplashViewController.swift */; };
+		C9711EDF2CC9683500FB479D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EB72CC9683500FB479D /* SplashViewModel.swift */; };
+		C9711EE02CC9683500FB479D /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EB92CC9683500FB479D /* Binding.swift */; };
+		C9711EE12CC9683500FB479D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EBB2CC9683500FB479D /* AppDelegate.swift */; };
+		C9711EE22CC9683500FB479D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EC02CC9683500FB479D /* SceneDelegate.swift */; };
+		C9711EE32CC9683500FB479D /* HeroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9711EA82CC9683500FB479D /* HeroCollectionViewCell.xib */; };
+		C9711EE42CC9683500FB479D /* HeroesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9711EAC2CC9683500FB479D /* HeroesListViewController.xib */; };
+		C9711EE52CC9683500FB479D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9711EB12CC9683500FB479D /* LoginViewController.xib */; };
+		C9711EE62CC9683500FB479D /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9711EB62CC9683500FB479D /* SplashViewController.xib */; };
+		C9711EE72CC9683500FB479D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9711EBC2CC9683500FB479D /* Assets.xcassets */; };
+		C9711EE92CC9683500FB479D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9711EBF2CC9683500FB479D /* LaunchScreen.storyboard */; };
+		C9711EF62CC96A6400FB479D /* MOHero+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EEA2CC96A6400FB479D /* MOHero+CoreDataClass.swift */; };
+		C9711EF82CC96A6400FB479D /* MOLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EEC2CC96A6400FB479D /* MOLocation+CoreDataClass.swift */; };
+		C9711EFA2CC96A6400FB479D /* MOTransformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EEE2CC96A6400FB479D /* MOTransformation+CoreDataClass.swift */; };
+		C9711EFE2CC9907800FB479D /* ApiHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EFD2CC9907800FB479D /* ApiHero.swift */; };
+		C9711F002CC990E300FB479D /* ApiLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EFF2CC990E300FB479D /* ApiLocation.swift */; };
+		C9711F022CC994F300FB479D /* ApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F012CC994F300FB479D /* ApiTransformation.swift */; };
+		C9711F052CC995F800FB479D /* StoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F032CC995F800FB479D /* StoreDataProvider.swift */; };
+		C9711F072CC99F6D00FB479D /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F062CC99F6D00FB479D /* ApiProvider.swift */; };
 		C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9ECA01E2CC8319B00D823BC /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
@@ -28,30 +59,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C9711E952CC9683500FB479D /* SessionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDataSource.swift; sourceTree = "<group>"; };
+		C9711EA02CC9683500FB479D /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		C9711EA12CC9683500FB479D /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		C9711EA72CC9683500FB479D /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
+		C9711EA82CC9683500FB479D /* HeroCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroCollectionViewCell.xib; sourceTree = "<group>"; };
+		C9711EAA2CC9683500FB479D /* HeroesListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListBuilder.swift; sourceTree = "<group>"; };
+		C9711EAB2CC9683500FB479D /* HeroesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListViewController.swift; sourceTree = "<group>"; };
+		C9711EAC2CC9683500FB479D /* HeroesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroesListViewController.xib; sourceTree = "<group>"; };
+		C9711EAD2CC9683500FB479D /* HeroesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListViewModel.swift; sourceTree = "<group>"; };
+		C9711EAF2CC9683500FB479D /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
+		C9711EB02CC9683500FB479D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C9711EB12CC9683500FB479D /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C9711EB22CC9683500FB479D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C9711EB42CC9683500FB479D /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
+		C9711EB52CC9683500FB479D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C9711EB62CC9683500FB479D /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		C9711EB72CC9683500FB479D /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		C9711EB92CC9683500FB479D /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		C9711EBB2CC9683500FB479D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C9711EBC2CC9683500FB479D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C9711EBD2CC9683500FB479D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9711EBE2CC9683500FB479D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C9711EC02CC9683500FB479D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C9711EC32CC9683500FB479D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		C9711EEA2CC96A6400FB479D /* MOHero+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MOHero+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9711EEC2CC96A6400FB479D /* MOLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MOLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9711EEE2CC96A6400FB479D /* MOTransformation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MOTransformation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9711EFD2CC9907800FB479D /* ApiHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHero.swift; sourceTree = "<group>"; };
+		C9711EFF2CC990E300FB479D /* ApiLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLocation.swift; sourceTree = "<group>"; };
+		C9711F012CC994F300FB479D /* ApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTransformation.swift; sourceTree = "<group>"; };
+		C9711F032CC995F800FB479D /* StoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataProvider.swift; sourceTree = "<group>"; };
+		C9711F062CC99F6D00FB479D /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 		C9B602D52CC427400039E6CE /* iOS-Avanzado-Dbz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Avanzado-Dbz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B602EB2CC427410039E6CE /* iOS-Avanzado-DbzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Avanzado-DbzTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B602F52CC427410039E6CE /* iOS-Avanzado-DbzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Avanzado-DbzUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C9B602FD2CC427410039E6CE /* Exceptions for "iOS-Avanzado-Dbz" folder in "iOS-Avanzado-Dbz" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Supporting Files/Info.plist",
-			);
-			target = C9B602D42CC427400039E6CE /* iOS-Avanzado-Dbz */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C9B602D72CC427400039E6CE /* iOS-Avanzado-Dbz */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C9B602FD2CC427410039E6CE /* Exceptions for "iOS-Avanzado-Dbz" folder in "iOS-Avanzado-Dbz" target */,
-			);
-			path = "iOS-Avanzado-Dbz";
-			sourceTree = "<group>";
-		};
 		C9B602EE2CC427410039E6CE /* iOS-Avanzado-DbzTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "iOS-Avanzado-DbzTests";
@@ -90,10 +135,169 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C9711E942CC9683500FB479D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EEA2CC96A6400FB479D /* MOHero+CoreDataClass.swift */,
+				C9711EEC2CC96A6400FB479D /* MOLocation+CoreDataClass.swift */,
+				C9711EEE2CC96A6400FB479D /* MOTransformation+CoreDataClass.swift */,
+				C9711E8D2CC9683500FB479D /* Model.xcdatamodeld */,
+				C9711F032CC995F800FB479D /* StoreDataProvider.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C9711E962CC9683500FB479D /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				C9711E952CC9683500FB479D /* SessionDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		C9711E9B2CC9683500FB479D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C9711F062CC99F6D00FB479D /* ApiProvider.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C9711E9E2CC9683500FB479D /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		C9711E9F2CC9683500FB479D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EFC2CC9905400FB479D /* ApiModel */,
+				C9711E942CC9683500FB479D /* CoreData */,
+				C9711E962CC9683500FB479D /* DataSources */,
+				C9711E9B2CC9683500FB479D /* Networking */,
+				C9711E9E2CC9683500FB479D /* Request */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C9711EA22CC9683500FB479D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EA02CC9683500FB479D /* Credentials.swift */,
+				C9711EA12CC9683500FB479D /* Hero.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C9711EA52CC9683500FB479D /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		C9711EA62CC9683500FB479D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EA22CC9683500FB479D /* Models */,
+				C9711EA52CC9683500FB479D /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		C9711EA92CC9683500FB479D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EA72CC9683500FB479D /* HeroCollectionViewCell.swift */,
+				C9711EA82CC9683500FB479D /* HeroCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C9711EAE2CC9683500FB479D /* HeroesList */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EA92CC9683500FB479D /* Cell */,
+				C9711EAA2CC9683500FB479D /* HeroesListBuilder.swift */,
+				C9711EAB2CC9683500FB479D /* HeroesListViewController.swift */,
+				C9711EAC2CC9683500FB479D /* HeroesListViewController.xib */,
+				C9711EAD2CC9683500FB479D /* HeroesListViewModel.swift */,
+			);
+			path = HeroesList;
+			sourceTree = "<group>";
+		};
+		C9711EB32CC9683500FB479D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EAF2CC9683500FB479D /* LoginBuilder.swift */,
+				C9711EB02CC9683500FB479D /* LoginViewController.swift */,
+				C9711EB12CC9683500FB479D /* LoginViewController.xib */,
+				C9711EB22CC9683500FB479D /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C9711EB82CC9683500FB479D /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EB42CC9683500FB479D /* SplashBuilder.swift */,
+				C9711EB52CC9683500FB479D /* SplashViewController.swift */,
+				C9711EB62CC9683500FB479D /* SplashViewController.xib */,
+				C9711EB72CC9683500FB479D /* SplashViewModel.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		C9711EBA2CC9683500FB479D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EAE2CC9683500FB479D /* HeroesList */,
+				C9711EB32CC9683500FB479D /* Login */,
+				C9711EB82CC9683500FB479D /* Splash */,
+				C9711EB92CC9683500FB479D /* Binding.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C9711EC12CC9683500FB479D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EBB2CC9683500FB479D /* AppDelegate.swift */,
+				C9711EBC2CC9683500FB479D /* Assets.xcassets */,
+				C9711EBD2CC9683500FB479D /* Info.plist */,
+				C9711EBF2CC9683500FB479D /* LaunchScreen.storyboard */,
+				C9711EC02CC9683500FB479D /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9711EC22CC9683500FB479D /* iOS-Avanzado-Dbz */ = {
+			isa = PBXGroup;
+			children = (
+				C9711E9F2CC9683500FB479D /* Data */,
+				C9711EA62CC9683500FB479D /* Domain */,
+				C9711EBA2CC9683500FB479D /* Presentation */,
+				C9711EC12CC9683500FB479D /* Supporting Files */,
+			);
+			path = "iOS-Avanzado-Dbz";
+			sourceTree = "<group>";
+		};
+		C9711EFC2CC9905400FB479D /* ApiModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9711EFD2CC9907800FB479D /* ApiHero.swift */,
+				C9711EFF2CC990E300FB479D /* ApiLocation.swift */,
+				C9711F012CC994F300FB479D /* ApiTransformation.swift */,
+			);
+			path = ApiModel;
+			sourceTree = "<group>";
+		};
 		C9B602CC2CC427400039E6CE = {
 			isa = PBXGroup;
 			children = (
-				C9B602D72CC427400039E6CE /* iOS-Avanzado-Dbz */,
+				C9711EC22CC9683500FB479D /* iOS-Avanzado-Dbz */,
 				C9B602EE2CC427410039E6CE /* iOS-Avanzado-DbzTests */,
 				C9B602F82CC427410039E6CE /* iOS-Avanzado-DbzUITests */,
 				C9B602D62CC427400039E6CE /* Products */,
@@ -124,9 +328,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C9B602D72CC427400039E6CE /* iOS-Avanzado-Dbz */,
 			);
 			name = "iOS-Avanzado-Dbz";
 			packageProductDependencies = (
@@ -234,6 +435,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9711EE32CC9683500FB479D /* HeroCollectionViewCell.xib in Resources */,
+				C9711EE42CC9683500FB479D /* HeroesListViewController.xib in Resources */,
+				C9711EE52CC9683500FB479D /* LoginViewController.xib in Resources */,
+				C9711EE62CC9683500FB479D /* SplashViewController.xib in Resources */,
+				C9711EE72CC9683500FB479D /* Assets.xcassets in Resources */,
+				C9711EE92CC9683500FB479D /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +465,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9711EC42CC9683500FB479D /* Model.xcdatamodeld in Sources */,
+				C9711ECB2CC9683500FB479D /* SessionDataSource.swift in Sources */,
+				C9711F022CC994F300FB479D /* ApiTransformation.swift in Sources */,
+				C9711F052CC995F800FB479D /* StoreDataProvider.swift in Sources */,
+				C9711EFE2CC9907800FB479D /* ApiHero.swift in Sources */,
+				C9711ED22CC9683500FB479D /* Credentials.swift in Sources */,
+				C9711ED32CC9683500FB479D /* Hero.swift in Sources */,
+				C9711F002CC990E300FB479D /* ApiLocation.swift in Sources */,
+				C9711EF62CC96A6400FB479D /* MOHero+CoreDataClass.swift in Sources */,
+				C9711EF82CC96A6400FB479D /* MOLocation+CoreDataClass.swift in Sources */,
+				C9711EFA2CC96A6400FB479D /* MOTransformation+CoreDataClass.swift in Sources */,
+				C9711ED62CC9683500FB479D /* HeroCollectionViewCell.swift in Sources */,
+				C9711ED72CC9683500FB479D /* HeroesListBuilder.swift in Sources */,
+				C9711ED82CC9683500FB479D /* HeroesListViewController.swift in Sources */,
+				C9711ED92CC9683500FB479D /* HeroesListViewModel.swift in Sources */,
+				C9711EDA2CC9683500FB479D /* LoginBuilder.swift in Sources */,
+				C9711EDB2CC9683500FB479D /* LoginViewController.swift in Sources */,
+				C9711EDC2CC9683500FB479D /* LoginViewModel.swift in Sources */,
+				C9711EDD2CC9683500FB479D /* SplashBuilder.swift in Sources */,
+				C9711EDE2CC9683500FB479D /* SplashViewController.swift in Sources */,
+				C9711EDF2CC9683500FB479D /* SplashViewModel.swift in Sources */,
+				C9711EE02CC9683500FB479D /* Binding.swift in Sources */,
+				C9711F072CC99F6D00FB479D /* ApiProvider.swift in Sources */,
+				C9711EE12CC9683500FB479D /* AppDelegate.swift in Sources */,
+				C9711EE22CC9683500FB479D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +521,17 @@
 			targetProxy = C9B602F62CC427410039E6CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C9711EBF2CC9683500FB479D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9711EBE2CC9683500FB479D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C9B602FF2CC427410039E6CE /* Debug */ = {
@@ -619,6 +862,19 @@
 			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		C9711E8D2CC9683500FB479D /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C9711EC32CC9683500FB479D /* Model.xcdatamodel */,
+			);
+			currentVersion = C9711EC32CC9683500FB479D /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C9B602CD2CC427400039E6CE /* Project object */;
 }

@@ -19,10 +19,10 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var signInButton: UIButton!
     
-    private let viewModel: LoginViewModel
+   
     
-    init(viewModel: LoginViewModel) {
-        self.viewModel = viewModel
+    init() {
+        
         super.init(nibName: String(describing: LoginViewController.self), bundle: Bundle(for: type(of: self)))
     }
     
@@ -32,58 +32,31 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bind()
+      
+        let apiProvider = ApiProvider()
+        
+        apiProvider.loadHeroes { result in
+            switch result{
+                
+            case .success(let hero):
+                debugPrint(hero)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
         
     }
     
     
     @IBAction func loginButton(_ sender: UIButton) {
         
-        viewModel.signIn(userNameTextField.text, passwordTextField.text)
+       
         
     }
     
-    private func bind() {
-        viewModel.onStateChanged.bind { [weak self] state in
-            switch state {
-                
-            case .loading:
-                self?.renderLoading()
-            case .success:
-                self?.renderSuccess()
-                self?.present(HeroesListBuilder().build(), animated: true)
-            case .error(reason: let reason):
-                self?.renderError(reason)
-            }
-        }
-    }
+ 
     
-    
-    //MARK: - State rendering functions
-    
-    private func renderLoading(){
-        spinner.startAnimating()
-        signInButton.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    private func renderSuccess(){
-        spinner.stopAnimating()
-        signInButton.isHidden = false
-        errorLabel.isHidden = true
-    }
-    
-    private func renderError(_ reason: String) {
-
-        spinner.stopAnimating()
-        signInButton.isHidden = false
-        errorLabel.isHidden = true
-        
-        let alert = UIAlertController(title: "Alerta", message: reason, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
+  
     
 
 }
