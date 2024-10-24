@@ -37,8 +37,12 @@ class SplashViewController: UIViewController {
             case .error:
                 break
             case .success:
-                self?.present(LoginBuilder().build(), animated: true)
-                self?.setAnimation(false)
+                if SecureDataStore.shared.getToken() != nil {
+                    self?.present(HeroesListBuilder().build(), animated: true)
+                } else {
+                    self?.present(LoginBuilder().build(), animated: true)
+                    self?.setAnimation(false)
+                }
             }
         }
     }

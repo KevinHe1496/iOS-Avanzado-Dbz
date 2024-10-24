@@ -15,6 +15,7 @@ protocol ApiProviderProtocol {
 
 
 class ApiProvider: ApiProviderProtocol {
+    
     private let session: URLSession
     private let requestBuilder: GARequestBuilder
     
@@ -24,26 +25,30 @@ class ApiProvider: ApiProviderProtocol {
     }
     
     func loadHeroes(name: String = "", completion: @escaping (Result<[ApiHero], GAError>) -> Void) {
-        if let request = requestBuilder.buildRequest(endPoint: .heroes, params: ["name": name]) {
+        do {
+            let request = try requestBuilder.buildRequest(endPoint: .heroes, params: ["name": name])
             makeRequest(request: request, completion: completion)
-        } else {
-            completion(.failure(.requestWasNil))
+        } catch {
+            completion(.failure(error))
         }
+    
     }
     
     func loadLocations(id: String, completion: @escaping (Result<[ApiLocation], GAError>) -> Void) {
-        if let request = requestBuilder.buildRequest(endPoint: .locations, params: ["id": id]) {
+        do {
+            let request = try requestBuilder.buildRequest(endPoint: .locations, params: ["id": id])
             makeRequest(request: request, completion: completion)
-        } else {
-            completion(.failure(.requestWasNil))
+        } catch {
+            completion(.failure(error))
         }
     }
     
     func loadTransformations(id: String, completion: @escaping (Result<[ApiTransformation], GAError>) -> Void) {
-        if let request = requestBuilder.buildRequest(endPoint: .transformations, params: ["id": id]) {
+        do {
+            let request = try requestBuilder.buildRequest(endPoint: .transformations, params: ["id": id])
             makeRequest(request: request, completion: completion)
-        } else {
-            completion(.failure(.requestWasNil))
+        } catch {
+            completion(.failure(error))
         }
     }
     

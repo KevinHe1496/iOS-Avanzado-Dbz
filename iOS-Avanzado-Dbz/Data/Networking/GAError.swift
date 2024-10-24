@@ -15,6 +15,8 @@ enum GAError: Error, CustomStringConvertible {
     case errorFromApi(statusCode: Int)
     case dataNoReveiced
     case errorParsingData
+    case sessionTokenMissing
+    case badUrl
     
     var description: String {
         switch self {
@@ -29,6 +31,10 @@ enum GAError: Error, CustomStringConvertible {
             return "Data no received from server"
         case .errorParsingData:
             return "There was un error parsing data"
+        case .sessionTokenMissing:
+            return "Seesion token is missing"
+        case .badUrl:
+            return "Bad url"
         }
     }
 }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C9711EC42CC9683500FB479D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9711E8D2CC9683500FB479D /* Model.xcdatamodeld */; };
-		C9711ECB2CC9683500FB479D /* SessionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711E952CC9683500FB479D /* SessionDataSource.swift */; };
 		C9711ED22CC9683500FB479D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA02CC9683500FB479D /* Credentials.swift */; };
 		C9711ED32CC9683500FB479D /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA12CC9683500FB479D /* Hero.swift */; };
 		C9711ED62CC9683500FB479D /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA72CC9683500FB479D /* HeroCollectionViewCell.swift */; };
@@ -42,6 +41,7 @@
 		C9C34F192CCA922600CA1E2D /* GAEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F182CCA922600CA1E2D /* GAEndpoint.swift */; };
 		C9C34F1B2CCA925500CA1E2D /* GARequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1A2CCA925500CA1E2D /* GARequestBuilder.swift */; };
 		C9C34F1D2CCA954200CA1E2D /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */; };
+		C9C34FAA2CCAF9A100CA1E2D /* SecureDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */; };
 		C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9ECA01E2CC8319B00D823BC /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C9711E952CC9683500FB479D /* SessionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDataSource.swift; sourceTree = "<group>"; };
 		C9711EA02CC9683500FB479D /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		C9711EA12CC9683500FB479D /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		C9711EA72CC9683500FB479D /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		C9C34F1A2CCA925500CA1E2D /* GARequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GARequestBuilder.swift; sourceTree = "<group>"; };
 		C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCase.swift; sourceTree = "<group>"; };
 		C9C34FA62CCADC2700CA1E2D /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
+		C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -164,7 +164,7 @@
 		C9711E962CC9683500FB479D /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				C9711E952CC9683500FB479D /* SessionDataSource.swift */,
+				C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -488,12 +488,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9711EC42CC9683500FB479D /* Model.xcdatamodeld in Sources */,
-				C9711ECB2CC9683500FB479D /* SessionDataSource.swift in Sources */,
 				C9711F022CC994F300FB479D /* ApiTransformation.swift in Sources */,
 				C9711F052CC995F800FB479D /* StoreDataProvider.swift in Sources */,
 				C9C34F192CCA922600CA1E2D /* GAEndpoint.swift in Sources */,
 				C9711EFE2CC9907800FB479D /* ApiHero.swift in Sources */,
 				C9711ED22CC9683500FB479D /* Credentials.swift in Sources */,
+				C9C34FAA2CCAF9A100CA1E2D /* SecureDataStore.swift in Sources */,
 				C9711ED32CC9683500FB479D /* Hero.swift in Sources */,
 				C9711F002CC990E300FB479D /* ApiLocation.swift in Sources */,
 				C9C34F172CCA920D00CA1E2D /* GAError.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private let token = "eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiZW1haWwiOiJrZXZpbl9oZXJlZGlhMTBAaG90bWFpbC5jb20iLCJpZGVudGlmeSI6IkY2QTMyREQ5LTEwREYtNDEzMi1BQTI2LUFENTZEMURGN0U2RSJ9.DjTM9QRu5zFtFftxeti07olNxtBLCJqikI1RE7XlGIU"
+    
     
     @IBOutlet private weak var userNameTextField: UITextField!
     
@@ -52,6 +54,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButton(_ sender: UIButton) {
+        SecureDataStore.shared.set(token: token)
         
         present(HeroesListBuilder().build(), animated: true)
         
