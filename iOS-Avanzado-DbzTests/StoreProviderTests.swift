@@ -59,4 +59,26 @@ final class StoreProviderTests: XCTestCase {
         
     }
 
+    func test_addLocations_ShouldInsertLocationAndAssociateHero() throws {
+        // Given
+        let apiHero = ApiHero(id: "123", name: "Kevin", description: "description", photo: "photo", favorite: false)
+        let apiLocation = ApiLocation(id: "id", date: "date", latitude: "0000", longitude: "1111", hero: apiHero)
+        // When
+        sut.add(heroes: [apiHero])
+        sut.add(locations: [apiLocation])
+        let heroes = sut.fetchHeroes(filter: nil)
+        
+        // Then
+        let hero = try XCTUnwrap(heroes.first)
+        XCTAssertEqual(hero.locations?.count, 1)
+        let location = try XCTUnwrap(hero.locations?.first)
+        XCTAssertEqual(location.id, apiLocation.id)
+        XCTAssertEqual(location.date, apiLocation.date)
+        XCTAssertEqual(location.latitude, apiLocation.latitude)
+        XCTAssertEqual(location.longitude, apiLocation.longitude)
+        XCTAssertEqual(location.hero?.id, hero.id)
+        
+    }
+    
+
 }

@@ -12,5 +12,5 @@ struct ApiHero: Codable {
     let name: String?
     let description: String?
     let photo: String?
-    let favorite: Bool?
+    var favorite: Bool = false
 }
