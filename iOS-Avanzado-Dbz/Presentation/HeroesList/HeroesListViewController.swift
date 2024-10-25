@@ -21,9 +21,13 @@ final class HeroesListViewController: UICollectionViewController {
     private let heroes = [Hero]()
     private var dataSource: DataSource?
     private let viewModel: HeroesListViewModel
+    private let storeDataProvider = StoreDataProvider()
+    private let secureDataStore = SecureDataStore()
+    
     
     //MARK: - Initializers
     init(viewModel: HeroesListViewModel = HeroesListViewModel()){
+        
         self.viewModel = viewModel
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -40,10 +44,30 @@ final class HeroesListViewController: UICollectionViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Crear el botón de logout
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
+        // Añadir el botón a la derecha de la barra de navegación
+        self.navigationItem.rightBarButtonItem = logoutButton
+        
         title = "Personajes"
         configureCollecionView()
         setBinding()
         viewModel.loadData(filter: nil)
+    }
+    
+    // MARK: - LogOut
+    
+    @objc func logoutTapped() {
+        
+        storeDataProvider.clearBBDD()
+        secureDataStore.deleteToken()
+//        navigationController?.popToRootViewController(animated: true)
+        let loginViewController = LoginBuilder().build()// Instancia tu controlador de login
+            let navController = UINavigationController(rootViewController: loginViewController)
+            navController.modalPresentationStyle = .fullScreen
+            present(navController, animated: true, completion: nil)
+     
     }
     
     func setBinding() {

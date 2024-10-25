@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private let token = "eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiZW1haWwiOiJrZXZpbl9oZXJlZGlhMTBAaG90bWFpbC5jb20iLCJpZGVudGlmeSI6IkY2QTMyREQ5LTEwREYtNDEzMi1BQTI2LUFENTZEMURGN0U2RSJ9.DjTM9QRu5zFtFftxeti07olNxtBLCJqikI1RE7XlGIU"
+    private let viewModel: LoginViewModel
     
     
     @IBOutlet private weak var userNameTextField: UITextField!
@@ -23,8 +24,8 @@ class LoginViewController: UIViewController {
     
    
     
-    init() {
-        
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: String(describing: LoginViewController.self), bundle: Bundle(for: type(of: self)))
     }
     

@@ -42,6 +42,7 @@
 		C9C34F1B2CCA925500CA1E2D /* GARequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1A2CCA925500CA1E2D /* GARequestBuilder.swift */; };
 		C9C34F1D2CCA954200CA1E2D /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */; };
 		C9C34FAA2CCAF9A100CA1E2D /* SecureDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */; };
+		C9C34FB02CCB322900CA1E2D /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34FAF2CCB322900CA1E2D /* LoginUseCase.swift */; };
 		C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9ECA01E2CC8319B00D823BC /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCase.swift; sourceTree = "<group>"; };
 		C9C34FA62CCADC2700CA1E2D /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataStore.swift; sourceTree = "<group>"; };
+		C9C34FAF2CCB322900CA1E2D /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */,
+				C9C34FAF2CCB322900CA1E2D /* LoginUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9711EC42CC9683500FB479D /* Model.xcdatamodeld in Sources */,
+				C9C34FB02CCB322900CA1E2D /* LoginUseCase.swift in Sources */,
 				C9711F022CC994F300FB479D /* ApiTransformation.swift in Sources */,
 				C9711F052CC995F800FB479D /* StoreDataProvider.swift in Sources */,
 				C9C34F192CCA922600CA1E2D /* GAEndpoint.swift in Sources */,
