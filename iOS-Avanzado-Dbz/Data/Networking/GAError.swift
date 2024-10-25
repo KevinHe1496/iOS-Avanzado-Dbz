@@ -17,6 +17,7 @@ enum GAError: Error, CustomStringConvertible {
     case errorParsingData
     case sessionTokenMissing
     case badUrl
+    case heroNotFound(idHero: String)
     
     var description: String {
         switch self {
@@ -35,6 +36,8 @@ enum GAError: Error, CustomStringConvertible {
             return "Seesion token is missing"
         case .badUrl:
             return "Bad url"
+        case .heroNotFound(idHero: let idHero):
+            return "Hero with id \(idHero) not found"
         }
     }
 }

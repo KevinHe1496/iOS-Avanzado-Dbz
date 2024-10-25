@@ -52,6 +52,8 @@ class ApiProvider: ApiProviderProtocol {
         }
     }
     
+
+    
     private func makeRequest<T: Decodable>(request: URLRequest,  completion: @escaping (Result<T, GAError>) -> Void ) {
         session.dataTask(with: request) { data, response, error in
             if let error {
@@ -78,4 +80,5 @@ class ApiProvider: ApiProviderProtocol {
             }
         }.resume()
     }
+    
 }

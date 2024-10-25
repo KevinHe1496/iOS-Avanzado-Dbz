@@ -62,12 +62,12 @@ final class HeroesListViewController: UICollectionViewController {
         
         storeDataProvider.clearBBDD()
         secureDataStore.deleteToken()
-//        navigationController?.popToRootViewController(animated: true)
+        //        navigationController?.popToRootViewController(animated: true)
         let loginViewController = LoginBuilder().build()// Instancia tu controlador de login
-            let navController = UINavigationController(rootViewController: loginViewController)
-            navController.modalPresentationStyle = .fullScreen
-            present(navController, animated: true, completion: nil)
-     
+        let navController = UINavigationController(rootViewController: loginViewController)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true, completion: nil)
+        
     }
     
     func setBinding() {
@@ -94,24 +94,22 @@ final class HeroesListViewController: UICollectionViewController {
         collectionView.delegate = self
         
         let cellRegister = UICollectionView.CellRegistration<HeroCollectionViewCell, Hero>(cellNib: UINib(nibName: HeroCollectionViewCell.identifier, bundle: nil)) { cell, indexPath, hero in
-            if let hero = self.viewModel.heroAt(index: indexPath.row) {
-                cell.nameLabel.text = hero.name
-                if let url = URL(string: hero.photo) {
-                    cell.heroImageView.setImage(url: url)
-                } else {
-                    // Maneja el caso donde la URL es inválida
-                    cell.heroImageView.image = UIImage(named: "placeholderImage")
-                }
-
-            }
             
+            cell.nameLabel.text = hero.name
+            
+            if let url = URL(string: hero.photo) {
+                cell.heroImageView.setImage(url: url)
+            } else {
+                // Maneja el caso donde la URL es inválida
+                cell.heroImageView.image = UIImage(named: "placeholderImage")
+            }
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, hero in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegister, for: indexPath, item: hero)
         })
     }
-
+    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout

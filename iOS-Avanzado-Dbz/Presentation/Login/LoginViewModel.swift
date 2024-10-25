@@ -34,16 +34,8 @@ final class LoginViewModel {
             return onStateChaged.value = .error(reason: "Invalid password. Must be at least 4 characters")
         }
         
-        onStateChaged.value = .loading
-        loginUseCase.execute(username: userName, password: password) { [weak self] result in
-            switch result {
-                
-            case .success():
-                self?.onStateChaged.value = .success
-            case .failure(let error):
-                self?.onStateChaged.value = .error(reason: error.localizedDescription)
-            }
-        }
+        onStateChaged.value = .success
+
     }
     
     // MARK: - Validate functions

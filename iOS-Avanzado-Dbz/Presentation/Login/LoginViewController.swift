@@ -36,33 +36,42 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-//        let apiProvider = ApiProvider()
-//        
-//        apiProvider.loadHeroes { result in
-//            switch result{
-//                
-//            case .success(let heros):
-//                
-//                StoreDataProvider.shared.add(heroes: heros)
-//                let bdHeroes = StoreDataProvider.shared.fetchHeroes(filter: nil)
-//                debugPrint(bdHeroes)
-//            case .failure(let error):
-//                debugPrint(error)
-//            }
-//        }
-        
+        viewModel.onStateChaged.bind { state in
+            self.handleStateChange(state)
+        }
     }
     
     
     @IBAction func loginButton(_ sender: UIButton) {
         SecureDataStore.shared.set(token: token)
         
-        present(HeroesListBuilder().build(), animated: true)
+        guard let username = userNameTextField.text, let password = passwordTextField.text else {
+            errorLabel.text = "Por favor, ingresa tu usuario y contraseña"
+            return
+        }
+        
+        viewModel.signIn(userName: username, password: password)
         
     }
     
  
-    
+    private func handleStateChange(_ state: LoginState) {
+        switch state {
+        case .initial:
+            spinner.stopAnimating()
+            errorLabel.isHidden = true
+        case .loading:
+            spinner.startAnimating()
+            errorLabel.isHidden = true
+        case .success:
+            spinner.stopAnimating()
+            present(HeroesListBuilder().build(), animated: true)
+        case .error(let reason):
+            spinner.stopAnimating()
+            errorLabel.text = reason
+            errorLabel.isHidden = false
+        }
+    }
   
     
 

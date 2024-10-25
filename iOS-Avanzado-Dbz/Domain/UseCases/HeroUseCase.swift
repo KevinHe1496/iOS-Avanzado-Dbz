@@ -28,11 +28,12 @@ final class HeroUseCase: HeroUseCaseProtocol {
                 switch result {
                     
                 case .success(let heroes):
-                    
-                    self?.storeDataProvider.add(heroes: heroes)
-                    let bdHeroes = self?.storeDataProvider.fetchHeroes(filter: filter) ?? []
-                    let heroes = bdHeroes.map({Hero(moHero: $0)})
-                    completion(.success(heroes))
+                    DispatchQueue.main.async {
+                        self?.storeDataProvider.add(heroes: heroes)
+                        let bdHeroes = self?.storeDataProvider.fetchHeroes(filter: filter) ?? []
+                        let heroes = bdHeroes.map({Hero(moHero: $0)})
+                        completion(.success(heroes))
+                    }
                     
                 case .failure(let error):
                     completion(.failure(error))
