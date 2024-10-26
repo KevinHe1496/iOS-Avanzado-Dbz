@@ -123,6 +123,12 @@ extension HeroesListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("estas haciendo tap")
+        guard let hero = viewModel.heroAt(index: indexPath.row) else {
+            return
+        }
+        let viewModel = HeroDetailViewModel(hero: hero)
+        let heroDetailVC = HeroDetailController(viewModel: viewModel)
+        navigationController?.pushViewController(heroDetailVC, animated: true)
     }
+    
 }

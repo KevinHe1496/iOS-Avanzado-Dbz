@@ -44,6 +44,7 @@ class HeroDetailUseCase: HeroDetailUseCaseProtocol {
             }
         } else {
             let domainLocations = bdLocations.map({Location(moLocation: $0)})
+            completion(.success(domainLocations))
         }
         
     }
