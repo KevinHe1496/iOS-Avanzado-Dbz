@@ -17,8 +17,18 @@ class StoreDataProvider {
     
     static var shared: StoreDataProvider = .init()
     
+    static var managedModel: NSManagedObjectModel = {
+        let bundle = Bundle(for: StoreDataProvider.self)
+        guard let url = bundle.url(forResource: "Model", withExtension: "momd"),
+              let model = NSManagedObjectModel(contentsOf: url) else {
+            fatalError("Error loading Model")
+        }
+        return model
+    }()
+    
     private let persistentContainer: NSPersistentContainer
     private let persistency: TypePersistency
+    
     
     private var context: NSManagedObjectContext {
         let viewContext = persistentContainer.viewContext
@@ -28,7 +38,7 @@ class StoreDataProvider {
     
     init(persistency: TypePersistency = .disk) {
         self.persistency = persistency
-        self.persistentContainer = NSPersistentContainer(name: "Model")
+        self.persistentContainer = NSPersistentContainer(name: "Model", managedObjectModel: Self.managedModel)
         if self.persistency == .inMemory {
             let persistentStore = persistentContainer.persistentStoreDescriptions.first
             persistentStore?.url = URL(filePath: "/dev/null")

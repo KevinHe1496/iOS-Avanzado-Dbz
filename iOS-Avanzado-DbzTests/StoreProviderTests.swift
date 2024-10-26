@@ -8,6 +8,8 @@
 import XCTest
 @testable import iOS_Avanzado_Dbz
 
+
+
 final class StoreProviderTests: XCTestCase {
     
     var sut: StoreDataProvider!
@@ -60,7 +62,11 @@ final class StoreProviderTests: XCTestCase {
     }
 
     func test_addLocations_ShouldInsertLocationAndAssociateHero() throws {
+        
+        
+        
         // Given
+        
         let apiHero = ApiHero(id: "123", name: "Kevin", description: "description", photo: "photo", favorite: false)
         let apiLocation = ApiLocation(id: "id", date: "date", latitude: "0000", longitude: "1111", hero: apiHero)
         // When
