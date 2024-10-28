@@ -8,7 +8,14 @@
 import UIKit
 
 class HeroDetailCell: UICollectionViewCell {
-
+    
+    static var identifier: String{
+        String(describing: HeroDetailCell.self)
+    }
+    
+    @IBOutlet weak var transformationImageView: UIImageView!
+    
+    @IBOutlet weak var transformationLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

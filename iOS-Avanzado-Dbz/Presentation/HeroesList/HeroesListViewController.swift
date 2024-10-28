@@ -126,6 +126,7 @@ extension HeroesListViewController: UICollectionViewDelegateFlowLayout {
         guard let hero = viewModel.heroAt(index: indexPath.row) else {
             return
         }
+        
         let viewModel = HeroDetailViewModel(hero: hero)
         let heroDetailVC = HeroDetailController(viewModel: viewModel)
         navigationController?.pushViewController(heroDetailVC, animated: true)

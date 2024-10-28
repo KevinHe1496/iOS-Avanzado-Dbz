@@ -9,6 +9,7 @@ import Foundation
 
 protocol HeroDetailUseCaseProtocol {
     func loadLocationsForHero(id: String, completion: @escaping (Result<[Location], GAError>)-> Void)
+    func loadTransformationsForHero(id: String, completion: @escaping (Result<[Transformation], GAError>) -> Void)
     
 }
 
@@ -47,6 +48,32 @@ class HeroDetailUseCase: HeroDetailUseCaseProtocol {
             completion(.success(domainLocations))
         }
         
+    }
+    
+    func loadTransformationsForHero(id: String, completion: @escaping (Result<[Transformation], GAError>) -> Void) {
+        guard let hero = self.getHeroWith(id: id) else {
+            debugPrint("Hero with id \(id) not found")
+            completion(.failure(.heroNotFound(idHero: id)))
+            return
+        }
+        let bdTransformation = hero.transformations ?? []
+        if bdTransformation.isEmpty {
+            apiProvider.loadTransformations(id: id) { [weak self] result in
+                switch result {
+                    
+                case .success(let transformation):
+                    self?.storeDataProvider.add(transformations: transformation)
+                    let bdTransformations = hero.transformations ?? []
+                    let domainTransformations = bdTransformations.map({Transformation(moTransformation: $0)})
+                    completion(.success(domainTransformations))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        } else {
+            let domainTransformations = bdTransformation.map({Transformation(moTransformation: $0)})
+            completion(.success(domainTransformations))
+        }
     }
     
     

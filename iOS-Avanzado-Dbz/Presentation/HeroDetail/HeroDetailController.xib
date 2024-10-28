@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeroDetailController" customModule="iOS_Avanzado_Dbz" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="mQd-p9-ppe" id="tld-FZ-OMi"/>
                 <outlet property="heroDescriptionLabel" destination="1Yb-aY-S9B" id="MCD-tr-u0e"/>
                 <outlet property="heroNameLabel" destination="wjF-er-kHo" id="HD2-4z-9EN"/>
                 <outlet property="mapView" destination="p31-f1-qme" id="RKl-5S-v9k"/>

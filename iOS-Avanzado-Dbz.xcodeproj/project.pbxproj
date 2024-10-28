@@ -41,6 +41,7 @@
 		C9711F022CC994F300FB479D /* ApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F012CC994F300FB479D /* ApiTransformation.swift */; };
 		C9711F052CC995F800FB479D /* StoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F032CC995F800FB479D /* StoreDataProvider.swift */; };
 		C9711F072CC99F6D00FB479D /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711F062CC99F6D00FB479D /* ApiProvider.swift */; };
+		C986664C2CCF03120016A213 /* Transformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C986664B2CCF03120016A213 /* Transformation.swift */; };
 		C995B4602CCC29370022976E /* LoginReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C995B45F2CCC29370022976E /* LoginReponse.swift */; };
 		C9B158182CCD32E5004D3E02 /* HeroAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B158172CCD32E5004D3E02 /* HeroAnnotation.swift */; };
 		C9B1581A2CCD3904004D3E02 /* HeroAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B158192CCD3904004D3E02 /* HeroAnnotationView.swift */; };
@@ -56,6 +57,8 @@
 		C9C34F1D2CCA954200CA1E2D /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */; };
 		C9C34FAA2CCAF9A100CA1E2D /* SecureDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */; };
 		C9C34FB02CCB322900CA1E2D /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34FAF2CCB322900CA1E2D /* LoginUseCase.swift */; };
+		C9DB00852CCDA73E00EE06BF /* Heroes.json in Sources */ = {isa = PBXBuildFile; fileRef = C9DB00842CCDA73E00EE06BF /* Heroes.json */; };
+		C9DB00872CCDA75A00EE06BF /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DB00862CCDA75A00EE06BF /* MockData.swift */; };
 		C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9ECA01E2CC8319B00D823BC /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +115,7 @@
 		C9711F012CC994F300FB479D /* ApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTransformation.swift; sourceTree = "<group>"; };
 		C9711F032CC995F800FB479D /* StoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataProvider.swift; sourceTree = "<group>"; };
 		C9711F062CC99F6D00FB479D /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
+		C986664B2CCF03120016A213 /* Transformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformation.swift; sourceTree = "<group>"; };
 		C995B45F2CCC29370022976E /* LoginReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReponse.swift; sourceTree = "<group>"; };
 		C9B158172CCD32E5004D3E02 /* HeroAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroAnnotation.swift; sourceTree = "<group>"; };
 		C9B158192CCD3904004D3E02 /* HeroAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroAnnotationView.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 		C9C34FA62CCADC2700CA1E2D /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataStore.swift; sourceTree = "<group>"; };
 		C9C34FAF2CCB322900CA1E2D /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		C9DB00842CCDA73E00EE06BF /* Heroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Heroes.json; sourceTree = "<group>"; };
+		C9DB00862CCDA75A00EE06BF /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -242,6 +248,7 @@
 				C9711EA12CC9683500FB479D /* Hero.swift */,
 				C995B45F2CCC29370022976E /* LoginReponse.swift */,
 				C910A0D32CCC542C00F77EA4 /* Location.swift */,
+				C986664B2CCF03120016A213 /* Transformation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -367,7 +374,9 @@
 		C9B158302CCD5218004D3E02 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				C9DB00862CCDA75A00EE06BF /* MockData.swift */,
 				C9B158312CCD5238004D3E02 /* URLProtocolMock.swift */,
+				C9DB00842CCDA73E00EE06BF /* Heroes.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -568,6 +577,7 @@
 				C9C34FAA2CCAF9A100CA1E2D /* SecureDataStore.swift in Sources */,
 				C9711ED32CC9683500FB479D /* Hero.swift in Sources */,
 				C9711F002CC990E300FB479D /* ApiLocation.swift in Sources */,
+				C986664C2CCF03120016A213 /* Transformation.swift in Sources */,
 				C9C34F172CCA920D00CA1E2D /* GAError.swift in Sources */,
 				C9711EF62CC96A6400FB479D /* MOHero+CoreDataClass.swift in Sources */,
 				C9711EF82CC96A6400FB479D /* MOLocation+CoreDataClass.swift in Sources */,
@@ -600,8 +610,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B158322CCD5238004D3E02 /* URLProtocolMock.swift in Sources */,
+				C9DB00852CCDA73E00EE06BF /* Heroes.json in Sources */,
 				C9B1582E2CCD5213004D3E02 /* ApiProviderTests.swift in Sources */,
 				C9B1582F2CCD5213004D3E02 /* StoreProviderTests.swift in Sources */,
+				C9DB00872CCDA75A00EE06BF /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

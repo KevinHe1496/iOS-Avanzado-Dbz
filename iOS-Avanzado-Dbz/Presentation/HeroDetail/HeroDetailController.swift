@@ -9,13 +9,21 @@ import UIKit
 
 import MapKit
 
+enum SectionsTransformation {
+    case main
+}
+
 class HeroDetailController: UIViewController {
     
     private let viewModel: HeroDetailViewModel
     private var locationManager: CLLocationManager = CLLocationManager()
+    private var dataSource: UICollectionViewDiffableDataSource<SectionsTransformation, Transformation>?
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     init(viewModel: HeroDetailViewModel) {
         self.viewModel = viewModel
+        
         super.init(nibName: String(describing: HeroDetailController.self), bundle: Bundle(for: type(of: self)))
     }
     
@@ -24,6 +32,8 @@ class HeroDetailController: UIViewController {
     @IBOutlet weak var heroNameLabel: UILabel!
     
     @IBOutlet weak var heroDescriptionLabel: UILabel!
+    
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,19 +47,27 @@ class HeroDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configuraCollectionView()
         configureMap()
         setBiding()
         viewModel.loadData()
         checkLocationAuthorizationStatus()
- 
+        
+        
     }
-
+    
     func setBiding() {
         viewModel.status.bind { [weak self] status in
             switch status {
                 
             case .locationUpdated:
                 self?.updateMapAnnotations()
+                self?.heroNameLabel.text = self?.viewModel.hero.name
+                self?.heroDescriptionLabel.text = self?.viewModel.hero.info
+                var snapshot = NSDiffableDataSourceSnapshot<SectionsTransformation, Transformation>()
+                snapshot.appendSections([.main])
+                snapshot.appendItems(self?.viewModel.heroTransformations ?? [], toSection: .main)
+                self?.dataSource?.apply(snapshot, animatingDifferences: true)
             case .error(let error):
                 let alert = UIAlertController(title: "Drabon Ball Z", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -73,26 +91,26 @@ class HeroDetailController: UIViewController {
     
     private func checkLocationAuthorizationStatus() {
         let autorizationStatus = locationManager.authorizationStatus
-            
-            switch autorizationStatus {
-            case .notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-            case .restricted:
-                mapView.showsUserLocation = false
-                mapView.showsUserTrackingButton = false
-            case .denied:
-                mapView.showsUserLocation = false
-                mapView.showsUserTrackingButton = false
-            case .authorizedAlways:
-                locationManager.startUpdatingLocation()
-            case .authorizedWhenInUse:
-                locationManager.startUpdatingLocation()
-            @unknown default:
-                break
-            }
-         
+        
+        switch autorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            mapView.showsUserLocation = false
+            mapView.showsUserTrackingButton = false
+        case .denied:
+            mapView.showsUserLocation = false
+            mapView.showsUserTrackingButton = false
+        case .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            break
+        }
+        
     }
-
+    
 }
 
 
@@ -111,6 +129,43 @@ extension HeroDetailController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         debugPrint("Call accesory tapped")
-         
+        
+    }
+    
+    
+    func configuraCollectionView() {
+        // Configuración del layout en horizontal
+        let layout = UICollectionViewFlowLayout()
+        let collectionWidth = collectionView.bounds.width
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: collectionWidth / 2 - 15, height: collectionView.bounds.height) // Ajusta el tamaño según tus necesidades
+        layout.minimumLineSpacing = 10 // Espacio entre elementos
+        layout.minimumInteritemSpacing = 0
+        
+        collectionView.collectionViewLayout = layout
+        collectionView.delegate = self
+        
+        let cellRegistration = UICollectionView.CellRegistration<HeroDetailCell, Transformation>(cellNib: UINib(nibName: HeroDetailCell.identifier, bundle: nil)) { cell, indexPath, transformation in
+            
+            cell.transformationLabel.text = transformation.name
+            
+            if let url = URL(string: transformation.photo) {
+                cell.transformationImageView.setImage(url: url)
+            } else {
+                cell.transformationImageView.image = UIImage(named: "placeholderImage")
+            }
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, transformation in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: transformation)
+        }
+        
+    }
+    
+}
+
+extension HeroDetailController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 80)
     }
 }
