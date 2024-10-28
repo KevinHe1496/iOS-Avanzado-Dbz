@@ -7,6 +7,7 @@
 import Foundation
 
 enum StatusHeroDetail {
+    case loading
     case locationUpdated
     case error(_ reason: String)
     case none
@@ -15,7 +16,6 @@ enum StatusHeroDetail {
 class HeroDetailViewModel {
     
     let hero: Hero
-    var transformations: [Transformation] = []
     private var heroLocations: [Location] = []
     var heroTransformations: [Transformation] = []
     private var useCase: HeroDetailUseCaseProtocol
@@ -30,6 +30,7 @@ class HeroDetailViewModel {
     }
     
     func loadData() {
+        status.value = .loading
         loadLocations()
         loadTransformations()
         
@@ -52,6 +53,7 @@ class HeroDetailViewModel {
     
     private func loadTransformations() {
         useCase.loadTransformationsForHero(id: hero.id) { [weak self] result in
+            
             switch result {
                 
             case .success(let transformations):
@@ -73,5 +75,12 @@ class HeroDetailViewModel {
             self?.annotations.append(annotation)
         }
         self.status.value = .locationUpdated
+    }
+    
+    func TransformationAt(index: Int) -> Transformation? {
+        guard index < heroTransformations.count else {
+            return nil
+        }
+        return heroTransformations[index]
     }
 }

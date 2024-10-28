@@ -15,6 +15,7 @@
                 <outlet property="heroDescriptionLabel" destination="1Yb-aY-S9B" id="MCD-tr-u0e"/>
                 <outlet property="heroNameLabel" destination="wjF-er-kHo" id="HD2-4z-9EN"/>
                 <outlet property="mapView" destination="p31-f1-qme" id="RKl-5S-v9k"/>
+                <outlet property="spinner" destination="k50-LF-Lc3" id="kaT-Cw-3mt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,6 +24,9 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="k50-LF-Lc3">
+                    <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                </activityIndicatorView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p31-f1-qme">
                     <rect key="frame" x="0.0" y="59" width="393" height="250"/>
                     <constraints>
@@ -80,8 +84,10 @@
                 <constraint firstItem="3Bd-Dn-SY0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8d9-q1-V6c"/>
                 <constraint firstItem="mQd-p9-ppe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CdH-Z0-dNX"/>
                 <constraint firstItem="mQd-p9-ppe" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="FUi-Yp-rhP"/>
+                <constraint firstItem="k50-LF-Lc3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IdO-T4-1ro"/>
                 <constraint firstItem="p31-f1-qme" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="SUF-Mk-wKC"/>
                 <constraint firstItem="mQd-p9-ppe" firstAttribute="top" secondItem="3Bd-Dn-SY0" secondAttribute="bottom" constant="10" id="abE-77-v1n"/>
+                <constraint firstItem="k50-LF-Lc3" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="dYV-vY-cUx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p31-f1-qme" secondAttribute="trailing" id="ePE-sX-EhT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Bd-Dn-SY0" secondAttribute="trailing" id="mjL-pI-6e8"/>
                 <constraint firstItem="p31-f1-qme" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nd7-zW-Cho"/>

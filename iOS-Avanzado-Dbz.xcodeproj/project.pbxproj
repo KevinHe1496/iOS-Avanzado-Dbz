@@ -11,6 +11,9 @@
 		C910A0D02CCC515C00F77EA4 /* HeroDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C910A0CE2CCC515C00F77EA4 /* HeroDetailController.xib */; };
 		C910A0D22CCC535300F77EA4 /* HeroDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910A0D12CCC535300F77EA4 /* HeroDetailUseCase.swift */; };
 		C910A0D42CCC542C00F77EA4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910A0D32CCC542C00F77EA4 /* Location.swift */; };
+		C941A7E72CCFD96700B041A2 /* TransformationDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941A7E52CCFD96700B041A2 /* TransformationDetailController.swift */; };
+		C941A7E82CCFD96700B041A2 /* TransformationDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C941A7E62CCFD96700B041A2 /* TransformationDetailController.xib */; };
+		C941A7EA2CCFDB5600B041A2 /* TransformationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941A7E92CCFDB5600B041A2 /* TransformationDetailViewModel.swift */; };
 		C9711EC42CC9683500FB479D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9711E8D2CC9683500FB479D /* Model.xcdatamodeld */; };
 		C9711ED22CC9683500FB479D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA02CC9683500FB479D /* Credentials.swift */; };
 		C9711ED32CC9683500FB479D /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA12CC9683500FB479D /* Hero.swift */; };
@@ -84,6 +87,9 @@
 		C910A0CE2CCC515C00F77EA4 /* HeroDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroDetailController.xib; sourceTree = "<group>"; };
 		C910A0D12CCC535300F77EA4 /* HeroDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailUseCase.swift; sourceTree = "<group>"; };
 		C910A0D32CCC542C00F77EA4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C941A7E52CCFD96700B041A2 /* TransformationDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationDetailController.swift; sourceTree = "<group>"; };
+		C941A7E62CCFD96700B041A2 /* TransformationDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransformationDetailController.xib; sourceTree = "<group>"; };
+		C941A7E92CCFDB5600B041A2 /* TransformationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationDetailViewModel.swift; sourceTree = "<group>"; };
 		C9711EA02CC9683500FB479D /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		C9711EA12CC9683500FB479D /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		C9711EA72CC9683500FB479D /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +195,16 @@
 				C910A0CE2CCC515C00F77EA4 /* HeroDetailController.xib */,
 			);
 			path = HeroDetail;
+			sourceTree = "<group>";
+		};
+		C941A7E42CCFD93E00B041A2 /* TransformationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C941A7E52CCFD96700B041A2 /* TransformationDetailController.swift */,
+				C941A7E62CCFD96700B041A2 /* TransformationDetailController.xib */,
+				C941A7E92CCFDB5600B041A2 /* TransformationDetailViewModel.swift */,
+			);
+			path = TransformationDetail;
 			sourceTree = "<group>";
 		};
 		C9711E942CC9683500FB479D /* CoreData */ = {
@@ -319,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				C9C34FA12CCACE4C00CA1E2D /* CustomViews */,
+				C941A7E42CCFD93E00B041A2 /* TransformationDetail */,
 				C910A0CC2CCC512500F77EA4 /* HeroDetail */,
 				C9711EAE2CC9683500FB479D /* HeroesList */,
 				C9711EB32CC9683500FB479D /* Login */,
@@ -536,6 +553,7 @@
 				C9711EE52CC9683500FB479D /* LoginViewController.xib in Resources */,
 				C9711EE62CC9683500FB479D /* SplashViewController.xib in Resources */,
 				C9B158352CCD5AB4004D3E02 /* HeroDetailCell.xib in Resources */,
+				C941A7E82CCFD96700B041A2 /* TransformationDetailController.xib in Resources */,
 				C9711EE72CC9683500FB479D /* Assets.xcassets in Resources */,
 				C910A0D02CCC515C00F77EA4 /* HeroDetailController.xib in Resources */,
 				C9711EE92CC9683500FB479D /* LaunchScreen.storyboard in Resources */,
@@ -583,11 +601,13 @@
 				C9711EF82CC96A6400FB479D /* MOLocation+CoreDataClass.swift in Sources */,
 				C9711EFA2CC96A6400FB479D /* MOTransformation+CoreDataClass.swift in Sources */,
 				C9711ED62CC9683500FB479D /* HeroCollectionViewCell.swift in Sources */,
+				C941A7E72CCFD96700B041A2 /* TransformationDetailController.swift in Sources */,
 				C9711ED72CC9683500FB479D /* HeroesListBuilder.swift in Sources */,
 				C9711ED82CC9683500FB479D /* HeroesListViewController.swift in Sources */,
 				C9711ED92CC9683500FB479D /* HeroesListViewModel.swift in Sources */,
 				C9C34F1B2CCA925500CA1E2D /* GARequestBuilder.swift in Sources */,
 				C9711EDA2CC9683500FB479D /* LoginBuilder.swift in Sources */,
+				C941A7EA2CCFDB5600B041A2 /* TransformationDetailViewModel.swift in Sources */,
 				C910A0D22CCC535300F77EA4 /* HeroDetailUseCase.swift in Sources */,
 				C9711EDB2CC9683500FB479D /* LoginViewController.swift in Sources */,
 				C9C34F1D2CCA954200CA1E2D /* HeroUseCase.swift in Sources */,

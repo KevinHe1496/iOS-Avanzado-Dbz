@@ -62,8 +62,8 @@ final class HeroesListViewController: UICollectionViewController {
         
         storeDataProvider.clearBBDD()
         secureDataStore.deleteToken()
-        //        navigationController?.popToRootViewController(animated: true)
-        let loginViewController = LoginBuilder().build()// Instancia tu controlador de login
+        
+        let loginViewController = LoginBuilder().build()
         let navController = UINavigationController(rootViewController: loginViewController)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true, completion: nil)
@@ -115,6 +115,7 @@ final class HeroesListViewController: UICollectionViewController {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension HeroesListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let itemsPorFila: CGFloat = 2
         let espaciado = (collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing ?? 10 * (itemsPorFila - 1)
         let ancho = collectionView.bounds.width - espaciado

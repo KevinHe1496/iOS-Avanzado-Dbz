@@ -31,6 +31,7 @@ class HeroDetailController: UIViewController {
     
     @IBOutlet weak var heroNameLabel: UILabel!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var heroDescriptionLabel: UILabel!
     
     
@@ -60,20 +61,34 @@ class HeroDetailController: UIViewController {
         viewModel.status.bind { [weak self] status in
             switch status {
                 
+            case .loading:
+                self?.spinner.startAnimating()
+                self?.heroNameLabel.isHidden = true
+                self?.heroDescriptionLabel.isHidden = true
+                self?.mapView.isHidden = true
+                
             case .locationUpdated:
+                self?.spinner.stopAnimating()
+                self?.heroNameLabel.isHidden = false
+                self?.heroDescriptionLabel.isHidden = false
+                self?.mapView.isHidden = false
                 self?.updateMapAnnotations()
                 self?.heroNameLabel.text = self?.viewModel.hero.name
                 self?.heroDescriptionLabel.text = self?.viewModel.hero.info
+                
                 var snapshot = NSDiffableDataSourceSnapshot<SectionsTransformation, Transformation>()
                 snapshot.appendSections([.main])
                 snapshot.appendItems(self?.viewModel.heroTransformations ?? [], toSection: .main)
                 self?.dataSource?.apply(snapshot, animatingDifferences: true)
+                
+                
             case .error(let error):
                 let alert = UIAlertController(title: "Drabon Ball Z", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self?.present(alert, animated: true)
             case .none:
                 break
+                
             }
         }
         
@@ -163,9 +178,21 @@ extension HeroDetailController: MKMapViewDelegate {
     }
     
 }
-
+//collectionView.bounds.size.width
 extension HeroDetailController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: 80)
+        return CGSize(width: 170, height: 170)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let transformation = viewModel.TransformationAt(index: indexPath.row) else {
+            return
+        }
+        
+        
+        let viewModel = TransformationDetailViewModel(transformation: transformation)
+        let transformationDetailVC = TransformationDetailController(viewModel: viewModel)
+        navigationController?.pushViewController(transformationDetailVC, animated: true)
     }
 }
