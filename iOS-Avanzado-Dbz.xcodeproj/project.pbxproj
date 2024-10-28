@@ -14,6 +14,8 @@
 		C941A7E72CCFD96700B041A2 /* TransformationDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941A7E52CCFD96700B041A2 /* TransformationDetailController.swift */; };
 		C941A7E82CCFD96700B041A2 /* TransformationDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C941A7E62CCFD96700B041A2 /* TransformationDetailController.xib */; };
 		C941A7EA2CCFDB5600B041A2 /* TransformationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941A7E92CCFDB5600B041A2 /* TransformationDetailViewModel.swift */; };
+		C941A7EE2CD042BE00B041A2 /* Heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = C941A7ED2CD042B400B041A2 /* Heroes.json */; };
+		C941A7F02CD054B600B041A2 /* SecureDataStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941A7EF2CD054B600B041A2 /* SecureDataStoreMock.swift */; };
 		C9711EC42CC9683500FB479D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9711E8D2CC9683500FB479D /* Model.xcdatamodeld */; };
 		C9711ED22CC9683500FB479D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA02CC9683500FB479D /* Credentials.swift */; };
 		C9711ED32CC9683500FB479D /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9711EA12CC9683500FB479D /* Hero.swift */; };
@@ -60,7 +62,6 @@
 		C9C34F1D2CCA954200CA1E2D /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34F1C2CCA954200CA1E2D /* HeroUseCase.swift */; };
 		C9C34FAA2CCAF9A100CA1E2D /* SecureDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */; };
 		C9C34FB02CCB322900CA1E2D /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C34FAF2CCB322900CA1E2D /* LoginUseCase.swift */; };
-		C9DB00852CCDA73E00EE06BF /* Heroes.json in Sources */ = {isa = PBXBuildFile; fileRef = C9DB00842CCDA73E00EE06BF /* Heroes.json */; };
 		C9DB00872CCDA75A00EE06BF /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DB00862CCDA75A00EE06BF /* MockData.swift */; };
 		C9ECA01F2CC8319B00D823BC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9ECA01E2CC8319B00D823BC /* KeychainSwift */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,8 @@
 		C941A7E52CCFD96700B041A2 /* TransformationDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationDetailController.swift; sourceTree = "<group>"; };
 		C941A7E62CCFD96700B041A2 /* TransformationDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransformationDetailController.xib; sourceTree = "<group>"; };
 		C941A7E92CCFDB5600B041A2 /* TransformationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationDetailViewModel.swift; sourceTree = "<group>"; };
+		C941A7ED2CD042B400B041A2 /* Heroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Heroes.json; sourceTree = "<group>"; };
+		C941A7EF2CD054B600B041A2 /* SecureDataStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataStoreMock.swift; sourceTree = "<group>"; };
 		C9711EA02CC9683500FB479D /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		C9711EA12CC9683500FB479D /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		C9711EA72CC9683500FB479D /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -141,7 +144,6 @@
 		C9C34FA62CCADC2700CA1E2D /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		C9C34FA92CCAF9A100CA1E2D /* SecureDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataStore.swift; sourceTree = "<group>"; };
 		C9C34FAF2CCB322900CA1E2D /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
-		C9DB00842CCDA73E00EE06BF /* Heroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Heroes.json; sourceTree = "<group>"; };
 		C9DB00862CCDA75A00EE06BF /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -391,9 +393,10 @@
 		C9B158302CCD5218004D3E02 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				C941A7EF2CD054B600B041A2 /* SecureDataStoreMock.swift */,
+				C941A7ED2CD042B400B041A2 /* Heroes.json */,
 				C9DB00862CCDA75A00EE06BF /* MockData.swift */,
 				C9B158312CCD5238004D3E02 /* URLProtocolMock.swift */,
-				C9DB00842CCDA73E00EE06BF /* Heroes.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C941A7EE2CD042BE00B041A2 /* Heroes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,8 +634,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B158322CCD5238004D3E02 /* URLProtocolMock.swift in Sources */,
-				C9DB00852CCDA73E00EE06BF /* Heroes.json in Sources */,
 				C9B1582E2CCD5213004D3E02 /* ApiProviderTests.swift in Sources */,
+				C941A7F02CD054B600B041A2 /* SecureDataStoreMock.swift in Sources */,
 				C9B1582F2CCD5213004D3E02 /* StoreProviderTests.swift in Sources */,
 				C9DB00872CCDA75A00EE06BF /* MockData.swift in Sources */,
 			);

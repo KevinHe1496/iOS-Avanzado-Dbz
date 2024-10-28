@@ -71,28 +71,36 @@ class ApiProviderTests: XCTestCase {
         
     }
     
+    func test_load_HeroesError_shouldReturn_Error() throws {
+        // Given
+        let expectedToken = "Some Token"
+        var error: GAError?
+        URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: 503)
+        // When
+        let expectation = expectation(description: "Load Heroes Error")
+        setToken(expectedToken)
+        sut.loadHeroes { result in
+            switch result {
+                
+            case .success(_):
+                
+                XCTFail("Error expected")
+            case .failure(let receivedError):
+                error = receivedError
+                expectation.fulfill()
+            }
+        }
+        // Then
+        wait(for: [expectation], timeout: 1)
+        let receivedError = try XCTUnwrap(error)
+        XCTAssertEqual(receivedError.description, "Received error from server \(503)")
+        
+    }
+    
     func setToken(_ token: String) {
         SecureDataStoreMock().set(token: token)
     }
 
 }
 
-class SecureDataStoreMock: SecureDataStoreProtocol {
-    
-    private let kToken = "kToken"
-    private var userDefaults = UserDefaults.standard
-    
-    func set(token: String) {
-        userDefaults.set(token, forKey: kToken)
-    }
-    
-    func getToken() -> String? {
-        userDefaults.string(forKey: kToken)
-    }
-    
-    func deleteToken() {
-        userDefaults.removeObject(forKey: kToken)
-    }
-    
-    
-}
+

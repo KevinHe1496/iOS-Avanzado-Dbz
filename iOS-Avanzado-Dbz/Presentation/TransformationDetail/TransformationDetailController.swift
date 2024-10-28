@@ -51,7 +51,7 @@ class TransformationDetailController: UIViewController {
                 self?.transformationTitleLabel.isHidden = true
                 
             case .locationUpdated:
-                self?.spinner.startAnimating()
+                self?.spinner.stopAnimating()
                 self?.transformationDescriptionLabel.isHidden = false
                 self?.transformationImageView.isHidden = false
                 self?.transformationTitleLabel.isHidden = false
