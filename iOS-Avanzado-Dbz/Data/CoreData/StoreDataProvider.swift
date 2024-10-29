@@ -120,10 +120,12 @@ extension StoreDataProvider {
                 newTransformation.hero = hero
             }
         }
+        save()
     }
     
     func clearBBDD() {
         
+        context.reset()
         let batchDeleteheroes = NSBatchDeleteRequest(fetchRequest: MOHero.fetchRequest())
         let batchDeletelocations = NSBatchDeleteRequest(fetchRequest: MOLocation.fetchRequest())
         let batchDeletetransformations = NSBatchDeleteRequest(fetchRequest: MOTransformation.fetchRequest())
@@ -133,9 +135,8 @@ extension StoreDataProvider {
         for task in deleteTasks {
             do {
                 try context.execute(task)
-                context.reset()
-            } catch {
-                debugPrint("Error clearing BBDD \(error.localizedDescription)")
+            } catch let error as NSError {
+                debugPrint("Error clearing BBDD \(error)")
             }
         }
         

@@ -9,7 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private let token = "eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiZW1haWwiOiJrZXZpbl9oZXJlZGlhMTBAaG90bWFpbC5jb20iLCJpZGVudGlmeSI6IkY2QTMyREQ5LTEwREYtNDEzMi1BQTI2LUFENTZEMURGN0U2RSJ9.DjTM9QRu5zFtFftxeti07olNxtBLCJqikI1RE7XlGIU"
+    //    private let token = "eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiZW1haWwiOiJrZXZpbl9oZXJlZGlhMTBAaG90bWFpbC5jb20iLCJpZGVudGlmeSI6IkY2QTMyREQ5LTEwREYtNDEzMi1BQTI2LUFENTZEMURGN0U2RSJ9.DjTM9QRu5zFtFftxeti07olNxtBLCJqikI1RE7XlGIU"
+    
     private let viewModel: LoginViewModel
     
     
@@ -22,7 +23,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var signInButton: UIButton!
     
-   
+    
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -35,46 +36,71 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        viewModel.onStateChaged.bind { state in
-            self.handleStateChange(state)
-        }
+        
+        setBiding()
     }
     
     
     @IBAction func loginButton(_ sender: UIButton) {
-        SecureDataStore.shared.set(token: token)
+        //        SecureDataStore.shared.set(token: token)
         
-        guard let username = userNameTextField.text, let password = passwordTextField.text else {
-            errorLabel.text = "Por favor, ingresa tu usuario y contraseña"
+        let (valid, message) = viewModel.signIn(userName: userNameTextField.text, password: passwordTextField.text)
+        
+        if !valid {
+            let alert = UIAlertController(title: "Goku And Friends",
+                                          message: message,
+                                          preferredStyle: .alert)
+            let alertAction = UIAlertAction.init(title: "Ok", style: .default)
+            alert.addAction(alertAction)
+            present(alert, animated: true)
             return
         }
         
-        viewModel.signIn(userName: username, password: password)
+        viewModel.login(username: userNameTextField.text!, password: passwordTextField.text!)
         
     }
     
- 
-    private func handleStateChange(_ state: LoginState) {
-        switch state {
-        case .initial:
-            spinner.stopAnimating()
-            errorLabel.isHidden = true
-        case .loading:
-            spinner.startAnimating()
-            errorLabel.isHidden = true
-        case .success:
-            spinner.stopAnimating()
-            present(HeroesListBuilder().build(), animated: true)
-        case .error(let reason):
-            spinner.stopAnimating()
-            errorLabel.text = reason
-            errorLabel.isHidden = false
+    
+    private func setBiding() {
+        viewModel.onStateChaged.bind { [weak self] state in
+            guard let weakSelf = self else { return }
+            switch state {
+                
+            case .loading:
+                weakSelf.spinner.startAnimating()
+            case .success:
+                weakSelf.clearTextFields()
+                weakSelf.spinner.stopAnimating()
+                let heroesVC = HeroesListBuilder().build()
+                weakSelf.present(heroesVC, animated: true)
+            case .error(reason: let reason):
+                weakSelf.spinner.stopAnimating()
+                let alert = UIAlertController(title: "Goku And Friends",
+                                              message: reason,
+                                              preferredStyle: .alert)
+                let alertAction = UIAlertAction.init(title: "Ok", style: .default)
+                alert.addAction(alertAction)
+                weakSelf.present(alert, animated: true)
+            case .none:
+                break
+            }
         }
     }
-  
     
-
+    private func clearTextFields() {
+        userNameTextField.text = nil
+        passwordTextField.text = nil
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
-
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.dismissKeyboard()
+        return false
+    }
+}

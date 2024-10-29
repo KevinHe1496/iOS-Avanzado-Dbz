@@ -8,6 +8,9 @@
 import Foundation
 
 protocol ApiProviderProtocol {
+    
+    
+    func loginWith(username: String, password: String, completion: @escaping (Result<Bool, GAError>) -> Void)
     func loadHeroes(name: String, completion: @escaping (Result<[ApiHero], GAError>) -> Void)
     func loadLocations(id: String, completion: @escaping (Result<[ApiLocation], GAError>) -> Void)
     func loadTransformations(id: String, completion: @escaping (Result<[ApiTransformation], GAError>) -> Void)
@@ -22,6 +25,20 @@ class ApiProvider: ApiProviderProtocol {
     init(session: URLSession = .shared, requestBuilder: GARequestBuilder = GARequestBuilder()) {
         self.session = session
         self.requestBuilder = requestBuilder
+    }
+    
+    func loginWith(username: String, password: String, completion: @escaping (Result<Bool, GAError>) -> Void) {
+        guard let loginData = String(format: "%@:%@", username, password).data(using: .utf8)?.base64EncodedString() else {
+            completion(.failure(.errorParsingData))
+            return
+        }
+        do {
+            var request = try requestBuilder.buildRequest(endPoint: .login, params: [:])
+            request.setValue("Basic \(loginData)", forHTTPHeaderField: "Authorization")
+            makeRequest(request: request, completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
     }
     
     func loadHeroes(name: String = "", completion: @escaping (Result<[ApiHero], GAError>) -> Void) {
@@ -52,6 +69,33 @@ class ApiProvider: ApiProviderProtocol {
         }
     }
     
+    func makeRequest(request: URLRequest, completion: @escaping (Result<Bool, GAError>) -> Void) {
+        
+        session.dataTask(with: request) { [self] data, response, error in
+            guard error == nil else {
+                completion(.failure(.requestWasNil))
+                return
+            }
+            
+            if let statusCode = (response as? HTTPURLResponse)?.statusCode,
+               statusCode != 200 {
+                completion(.failure(.errorFromApi(statusCode: statusCode)))
+                return
+            }
+            
+            if let data {
+                if let token = String(data: data, encoding: .utf8) {
+                    requestBuilder.update(token: token)
+                    completion(.success(true))
+                } else {
+                    completion(.failure(.errorParsingData))
+                }
+            } else {
+                completion(.failure(.dataNoReveiced))
+            }
+        }.resume()
+        
+    }
 
     
     private func makeRequest<T: Decodable>(request: URLRequest,  completion: @escaping (Result<T, GAError>) -> Void ) {

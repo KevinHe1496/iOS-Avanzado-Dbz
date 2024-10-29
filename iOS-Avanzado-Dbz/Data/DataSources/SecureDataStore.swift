@@ -18,7 +18,7 @@ final class SecureDataStore: SecureDataStoreProtocol {
     private let kToken = "kToken"
     private let keychain = KeychainSwift()
     
-    static let shared: SecureDataStore = .init()
+    static var shared: SecureDataStore = .init()
     
     func set(token: String) {
         keychain.set(token, forKey: kToken)

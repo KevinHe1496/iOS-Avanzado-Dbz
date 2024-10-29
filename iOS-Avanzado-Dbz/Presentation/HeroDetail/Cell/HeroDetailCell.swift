@@ -13,12 +13,15 @@ class HeroDetailCell: UICollectionViewCell {
         String(describing: HeroDetailCell.self)
     }
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var transformationImageView: UIImageView!
     
     @IBOutlet weak var transformationLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        stackView.backgroundColor = .systemOrange
+        stackView.layer.cornerRadius = 10
+        stackView.layer.masksToBounds = true 
     }
 
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginUseCaseContract {
-    func execute(username: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func execute(username: String, password: String, completion: @escaping (Result<Bool, GAError>) -> Void)
 }
 
 final class LoginUseCase: LoginUseCaseContract {
@@ -22,8 +22,9 @@ final class LoginUseCase: LoginUseCaseContract {
         self.secureDataStore = secureDataStore
     }
     
-    func execute(username: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func execute(username: String, password: String, completion: @escaping (Result<Bool, GAError>) -> Void) {
 
+        self.apiProvider.loginWith(username: username, password: password, completion: completion)
     }
     
 }

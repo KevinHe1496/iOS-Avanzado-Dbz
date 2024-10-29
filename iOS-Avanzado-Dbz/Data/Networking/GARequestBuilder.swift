@@ -47,12 +47,16 @@ class GARequestBuilder {
         request?.setValue("application/json", forHTTPHeaderField: "Content-Type")
     }
     
+    func update(token: String) {
+        secureStorage.set(token: token)
+    }
+    
     func buildRequest(endPoint: GAEndpoint, params: [String: String]) throws(GAError) -> URLRequest {
         do {
             let url = try self.url(endPoint: endPoint)
             request = URLRequest(url: url)
             request?.httpMethod = endPoint.httpMethod()
-            try setHeaders(params: params)
+            try setHeaders(params: params, requiredAuthorization: endPoint.AuthorizationRequired())
             if let finalRequest = self.request {
                 return finalRequest
             }

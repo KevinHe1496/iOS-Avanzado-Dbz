@@ -26,10 +26,19 @@ enum GAEndpoint {
         }
     }
     
+    func AuthorizationRequired() -> Bool {
+        switch self {
+        case .heroes, .locations, .transformations:
+            return true
+        case .login:
+            return false
+        }
+    }
+    
     func httpMethod() -> String {
         switch self {
-        case .heroes, .locations, .transformations, .login:
-            "POST"
+        default:
+            return "POST"
         }
     }
 }

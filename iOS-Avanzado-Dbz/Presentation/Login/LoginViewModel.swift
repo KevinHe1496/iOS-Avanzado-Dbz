@@ -8,16 +8,17 @@
 import Foundation
 
 enum LoginState{
-    case initial
+    
     case loading
     case success
     case error(reason: String)
+    case none
     
 }
 
 final class LoginViewModel {
     
-    let onStateChaged: Binding<LoginState> = Binding(.initial)
+    let onStateChaged: Binding<LoginState> = Binding(.none)
     private let loginUseCase: LoginUseCaseContract
     
  
@@ -25,17 +26,34 @@ final class LoginViewModel {
         self.loginUseCase = loginUseCase
     }
     
-    func signIn(userName: String?, password: String?) {
-        guard let userName, isValidUsername(userName) else {
-            return onStateChaged.value = .error(reason: "Invalid username. Must be an email")
+    func signIn(userName: String?, password: String?) -> (Bool, String){
+        guard let userName, isValidUsername(userName), !userName.isEmpty else {
+            return (false, "Usario no correcto")
         }
         
-        guard let password, isValidPassword(password) else {
-            return onStateChaged.value = .error(reason: "Invalid password. Must be at least 4 characters")
+        guard let password, isValidPassword(password), !password.isEmpty else {
+            return (false, "Password no correcto")
         }
         
-        onStateChaged.value = .success
+        return (true, "")
 
+    }
+    
+    func login(username: String, password: String) {
+        onStateChaged.value = .loading
+        loginUseCase.execute(username: username, password: password) { [weak self] result in
+            switch result {
+                
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.onStateChaged.value = .success
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.onStateChaged.value = .error(reason: error.localizedDescription)
+                }
+            }
+        }
     }
     
     // MARK: - Validate functions
