@@ -23,6 +23,7 @@ final class StoreProviderTests: XCTestCase {
         sut = nil
         try super.tearDownWithError()
     }
+    
     func test_addHeroes_shouldReturnItemsInserted() throws {
         // Given
         let initialCount = sut.fetchHeroes(filter: nil).count
@@ -62,9 +63,7 @@ final class StoreProviderTests: XCTestCase {
     }
 
     func test_addLocations_ShouldInsertLocationAndAssociateHero() throws {
-        
-        
-        
+ 
         // Given
         
         let apiHero = ApiHero(id: "123", name: "Kevin", description: "description", photo: "photo", favorite: false)
@@ -83,6 +82,30 @@ final class StoreProviderTests: XCTestCase {
         XCTAssertEqual(location.latitude, apiLocation.latitude)
         XCTAssertEqual(location.longitude, apiLocation.longitude)
         XCTAssertEqual(location.hero?.id, hero.id)
+        
+    }
+   
+    
+    func test_addTransformations_ShouldInsertTransformationAndAssociateHero() throws {
+ 
+        // Given
+        
+        let apiHero = ApiHero(id: "123", name: "Kevin", description: "description", photo: "photo", favorite: false)
+        let apiTransformation = ApiTransformation(id: "id", name: "sayayin", photo: "photo", description: "description", hero: apiHero)
+        // When
+        sut.add(heroes: [apiHero])
+        sut.add(transformations: [apiTransformation])
+        let heroes = sut.fetchHeroes(filter: nil)
+        
+        // Then
+        let hero = try XCTUnwrap(heroes.first)
+        XCTAssertEqual(hero.transformations?.count, 1)
+        let transformation = try XCTUnwrap(hero.transformations?.first)
+        XCTAssertEqual(transformation.id, apiTransformation.id)
+        XCTAssertEqual(transformation.name, apiTransformation.name)
+        XCTAssertEqual(transformation.photo, apiTransformation.photo)
+        XCTAssertEqual(transformation.info, apiTransformation.description)
+        XCTAssertEqual(transformation.hero?.id, hero.id)
         
     }
     
