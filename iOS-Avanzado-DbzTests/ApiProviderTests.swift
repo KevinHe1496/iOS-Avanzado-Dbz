@@ -29,7 +29,7 @@ class ApiProviderTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func test_load_Heroes_shouldReturn_26_Heroes() throws {
+    func test_load_Heroes_shouldReturn_15_Heroes() throws {
         // Given
         let expectedToken = "Some Token"
         let expectedHero = try MockData.mockHeroes().first!
@@ -96,6 +96,152 @@ class ApiProviderTests: XCTestCase {
         XCTAssertEqual(receivedError.description, "Received error from server \(503)")
         
     }
+    
+    func test_load_Locations_shouldReturn_2_Locations() throws {
+        // Given
+        let expectedToken = "Some Token"
+        let id = "D88BE50B-913D-4EA8-AC42-04D3AF1434E3"
+        let expectedLocation = try MockData.mockLocations().first!
+        var locationResponse = [ApiLocation]()
+        URLProtocolMock.handler = { request in
+            let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/locations"))
+            
+            XCTAssertEqual(request.httpMethod, "POST")
+            XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(expectedToken)")
+            
+            let data = try MockData.loadLocationsData()
+            let response = HTTPURLResponse(url: expectedUrl, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            
+            return (data, response)
+        }
+        // When
+        let expectation = expectation(description: "Load Transformations")
+        setToken(expectedToken)
+        
+        sut.loadLocations(id: id) { result in
+            switch result {
+                
+            case .success(let apiLocations):
+                locationResponse = apiLocations
+                expectation.fulfill()
+            case .failure(_):
+                XCTFail("Success Expected")
+            }
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(locationResponse.count, 2)
+        let locationReceived = locationResponse.first
+        XCTAssertEqual(locationReceived?.id, expectedLocation.id)
+        XCTAssertEqual(locationReceived?.latitude, expectedLocation.latitude)
+        XCTAssertEqual(locationReceived?.longitude, expectedLocation.longitude)
+        XCTAssertEqual(locationReceived?.date, expectedLocation.date)
+        XCTAssertEqual(locationReceived?.hero?.id, expectedLocation.hero?.id)
+        
+    }
+    
+    func test_load_LocationsError_shouldReturn_Error() throws {
+        // Given
+        let expectedToken = "Some Token"
+        var error: GAError?
+        URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: 503)
+        // When
+        let expectation = expectation(description: "Load Heroes Error")
+        setToken(expectedToken)
+        
+        sut.loadLocations(id: "") { result in
+            switch result {
+                
+            case .success(_):
+                XCTFail("Error expected")
+            case .failure(let receivedError):
+                error = receivedError
+                expectation.fulfill()
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        let receivedError = try XCTUnwrap(error)
+        XCTAssertEqual(receivedError.description, "Received error from server \(503)")
+        
+    }
+    
+    
+    func test_load_Transformations_shouldReturn_2_Tranformations() throws {
+        // Given
+        let expectedToken = "Some Token"
+        let id = "D88BE50B-913D-4EA8-AC42-04D3AF1434E3"
+        let expectedTransformation = try MockData.mockTransformation().first!
+        var transformationResponse = [ApiTransformation]()
+        URLProtocolMock.handler = { request in
+            let expectedUrl = try XCTUnwrap(URL(string: "https://dragonball.keepcoding.education/api/heros/tranformations"))
+            
+            XCTAssertEqual(request.httpMethod, "POST")
+            XCTAssertEqual(request.url?.absoluteString, expectedUrl.absoluteString)
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(expectedToken)")
+            
+            let data = try MockData.loadTransformationsData()
+            let response = HTTPURLResponse(url: expectedUrl, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            
+            return (data, response)
+        }
+        // When
+        let expectation = expectation(description: "Load Transformations")
+        setToken(expectedToken)
+        
+        sut.loadTransformations(id: id) { result in
+            switch result {
+                
+            case .success(let apiTransformations):
+                transformationResponse = apiTransformations
+                expectation.fulfill()
+            case .failure(_):
+                XCTFail("Success Expected")
+            }
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(transformationResponse.count, 2)
+        let transformationReceived = transformationResponse.first
+        XCTAssertEqual(transformationReceived?.id, expectedTransformation.id)
+        XCTAssertEqual(transformationReceived?.name, expectedTransformation.name)
+        XCTAssertEqual(transformationReceived?.description, expectedTransformation.description)
+        XCTAssertEqual(transformationReceived?.photo, expectedTransformation.photo)
+        
+    }
+    
+    
+    func test_load_TransformationsError_shouldReturn_Error() throws {
+        // Given
+        let expectedToken = "Some Token"
+        var error: GAError?
+        URLProtocolMock.error = NSError(domain: "ios.Keepcoding", code: 503)
+        // When
+        let expectation = expectation(description: "Load Heroes Error")
+        setToken(expectedToken)
+        
+        sut.loadTransformations(id: "") { result in
+            switch result {
+                
+            case .success(_):
+                XCTFail("Error expected")
+            case .failure(let receivedError):
+                error = receivedError
+                expectation.fulfill()
+            }
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 1)
+        let receivedError = try XCTUnwrap(error)
+        XCTAssertEqual(receivedError.description, "Received error from server \(503)")
+        
+    }
+    
     
     func setToken(_ token: String) {
         SecureDataStoreMock().set(token: token)

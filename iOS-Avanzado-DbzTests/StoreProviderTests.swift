@@ -46,6 +46,7 @@ final class StoreProviderTests: XCTestCase {
     func test_fetchHeroes_shouldBeSortedAsc() throws {
         // Given
         let initialCount = sut.fetchHeroes(filter: nil).count
+        
         let apiHero = ApiHero(id: "123", name: "Kevin", description: "description", photo: "photo", favorite: false)
         let apiHero2 = ApiHero(id: "1234", name: "Goku", description: "description", photo: "photo", favorite: false)
         //When

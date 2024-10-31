@@ -90,6 +90,7 @@ extension StoreDataProvider {
         }
     }
     
+    
     func add(locations: [ApiLocation]) {
         for location in locations {
             let newLocation = MOLocation(context: context)
