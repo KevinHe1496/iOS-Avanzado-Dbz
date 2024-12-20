@@ -9,7 +9,6 @@ import Foundation
 
 enum GAError: Error, CustomStringConvertible {
     
-    
     case requestWasNil
     case errorFromServer(reason: Error)
     case errorFromApi(statusCode: Int)

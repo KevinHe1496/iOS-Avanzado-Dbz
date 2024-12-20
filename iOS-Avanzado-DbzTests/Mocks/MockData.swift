@@ -14,7 +14,7 @@ class MockData {
         guard let url = bundle.url(forResource: "Heroes", withExtension: "json"),
               
               let data = try? Data.init(contentsOf: url) else {
-            throw NSError(domain: "io.keepcoding.iOS-Avanzado-Dbz", code: -1)
+            throw GAError.dataNoReveiced
         }
         
 

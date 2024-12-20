@@ -8,8 +8,6 @@
 import Foundation
 
 protocol ApiProviderProtocol {
-    
-    
     func loginWith(username: String, password: String, completion: @escaping (Result<Bool, GAError>) -> Void)
     func loadHeroes(name: String, completion: @escaping (Result<[ApiHero], GAError>) -> Void)
     func loadLocations(id: String, completion: @escaping (Result<[ApiLocation], GAError>) -> Void)
