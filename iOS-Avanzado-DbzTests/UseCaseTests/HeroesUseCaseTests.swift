@@ -9,42 +9,6 @@
 @testable import iOS_Avanzado_Dbz
 import XCTest
 
-final class ApiProviderHeroesMock: ApiProviderProtocol {
-    func loginWith(username: String, password: String, completion: @escaping (Result<Bool, iOS_Avanzado_Dbz.GAError>) -> Void) {
-        //
-    }
-    
-    func loadLocations(id: String, completion: @escaping (Result<[iOS_Avanzado_Dbz.ApiLocation], iOS_Avanzado_Dbz.GAError>) -> Void) {
-        //
-    }
-    
-    func loadTransformations(id: String, completion: @escaping (Result<[iOS_Avanzado_Dbz.ApiTransformation], iOS_Avanzado_Dbz.GAError>) -> Void) {
-        //
-    }
-    
-    func loadHeroes(name: String, completion: @escaping (Result<[ApiHero], GAError>) -> Void) {
-        let heroes = mockApiHeroes()
-        completion(.success(heroes))
-    }
-
-    func mockApiHeroesData() throws -> Data {
-        guard let urlMock = Bundle(for: ApiProviderHeroesMock.self).url(forResource: "Heroes", withExtension: "json"),
-              let data = try? Data(contentsOf: urlMock) else {
-            throw GAError.dataNoReveiced
-        }
-        return data
-    }
-
-    func mockApiHeroes() -> [ApiHero] {
-        guard let data = try? mockApiHeroesData(),
-              let heroes = try? JSONDecoder().decode([ApiHero].self, from: data) else {
-            return []
-        }
-        return heroes
-    }
-}
-
-
 final class HeroesUseCaseTests: XCTestCase {
     
     var sut: HeroUseCaseProtocol!
@@ -53,7 +17,7 @@ final class HeroesUseCaseTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         storeDataProvider = StoreDataProvider(persistency: .inMemory)
-        sut = HeroUseCase(apiProvider: ApiProviderHeroesMock())
+        sut = HeroUseCase(apiProvider: ApiProviderMock(), storeDataProvider: StoreDataProvider())
     }
     
     override func tearDownWithError() throws {
@@ -81,6 +45,29 @@ final class HeroesUseCaseTests: XCTestCase {
         
         waitForExpectations(timeout: 5)
         XCTAssertEqual(heroesResponse.count, 15)
+    }
+    
+    func test_getAllHeros_Error() throws {
+        // given
+        sut = HeroUseCase(apiProvider: ApiProviderErrorMock(), storeDataProvider: storeDataProvider)
+        var errorHeros: GAError?
+        
+        //When
+        let expectation = expectation(description: "Get Heros")
+        sut.loadHeros(filter: nil) { result in
+            switch result {
+                
+            case .success(_):
+                XCTFail("Expected error")
+            case .failure(let error):
+                errorHeros = error
+                expectation.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 5)
+        
+        XCTAssertEqual(errorHeros?.description, "Data no received from server")
     }
 }
 

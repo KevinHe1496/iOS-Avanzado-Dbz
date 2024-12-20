@@ -50,7 +50,30 @@ final class LoginUseCaseTests: XCTestCase {
         }
         //Then
         await fulfillment(of: [expectation], timeout: 5)
-//        wait(for: [expectation], timeout: 0.1)
         XCTAssertEqual(success, true)
+    }
+    
+    func test_login_Error() async {
+        // Given
+        sut = LoginUseCase(apiProvider: ApiProviderErrorMock())
+        let username = "username"
+        let password = "password"
+        var error: Error?
+        
+        //When
+        let expectation = expectation(description: "Success Login")
+        sut.execute(username: username, password: password) { result in
+            switch result {
+                
+            case .success(_):
+                XCTFail("Expected Error")
+            case .failure(let errorLogin):
+                expectation.fulfill()
+                error = errorLogin
+            }
+        }
+        // Then
+        await fulfillment(of: [expectation], timeout: 5)
+        XCTAssertNotNil(error)
     }
 }
