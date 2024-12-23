@@ -17,7 +17,7 @@ class HeroDetailViewModel {
     
     let hero: Hero
     private var heroLocations: [HeroLocation] = []
-    var heroTransformations: [Transformation] = []
+    var heroTransformations: [HeroTransformation] = []
     private var useCase: HeroDetailUseCaseProtocol
     var status: Binding<StatusHeroDetail> = Binding(.none)
     
@@ -77,7 +77,7 @@ class HeroDetailViewModel {
         self.status.value = .locationUpdated
     }
     
-    func TransformationAt(index: Int) -> Transformation? {
+    func TransformationAt(index: Int) -> HeroTransformation? {
         guard index < heroTransformations.count else {
             return nil
         }

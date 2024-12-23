@@ -17,7 +17,7 @@ class HeroDetailController: UIViewController {
     
     private let viewModel: HeroDetailViewModel
     private var locationManager: CLLocationManager = CLLocationManager()
-    private var dataSource: UICollectionViewDiffableDataSource<SectionsTransformation, Transformation>?
+    private var dataSource: UICollectionViewDiffableDataSource<SectionsTransformation, HeroTransformation>?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -76,7 +76,7 @@ class HeroDetailController: UIViewController {
                 self?.heroNameLabel.text = self?.viewModel.hero.name
                 self?.heroDescriptionLabel.text = self?.viewModel.hero.info
                 
-                var snapshot = NSDiffableDataSourceSnapshot<SectionsTransformation, Transformation>()
+                var snapshot = NSDiffableDataSourceSnapshot<SectionsTransformation, HeroTransformation>()
                 snapshot.appendSections([.main])
                 snapshot.appendItems(self?.viewModel.heroTransformations ?? [], toSection: .main)
                 self?.dataSource?.apply(snapshot, animatingDifferences: true)
@@ -160,7 +160,7 @@ extension HeroDetailController: MKMapViewDelegate {
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         
-        let cellRegistration = UICollectionView.CellRegistration<HeroDetailCell, Transformation>(cellNib: UINib(nibName: HeroDetailCell.identifier, bundle: nil)) { cell, indexPath, transformation in
+        let cellRegistration = UICollectionView.CellRegistration<HeroDetailCell, HeroTransformation>(cellNib: UINib(nibName: HeroDetailCell.identifier, bundle: nil)) { cell, indexPath, transformation in
             
             cell.transformationLabel.text = transformation.name
             

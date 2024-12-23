@@ -16,10 +16,10 @@ enum StatusTransformationDetail {
 
 final class TransformationDetailViewModel {
     
-    var transformation: Transformation
+    var transformation: HeroTransformation
     var transformationStatus: Binding<StatusTransformationDetail> = Binding(.none)
     
-    init(transformation: Transformation) {
+    init(transformation: HeroTransformation) {
         self.transformation = transformation
     }
     

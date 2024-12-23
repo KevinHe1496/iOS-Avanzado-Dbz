@@ -76,4 +76,56 @@ final class HeroDetailUseCaseTests: XCTestCase {
         //Then
         XCTAssertNotNil(error)
     }
+    
+    func test_loadTransformationsWithHeroID() throws {
+        //Given
+        let hero = try XCTUnwrap(MockData.apiHeroGoku())
+        storeDataProvider.add(heroes: [hero])
+        let bdHeros = storeDataProvider.fetchHeroes(filter: nil)
+        XCTAssertEqual(bdHeros.count, 1)
+        XCTAssertEqual(bdHeros.first?.locations?.count, 0)
+        var transofrmationsResponse: [HeroTransformation]?
+        
+        //When
+        let expectation = expectation(description: "Load Transformations")
+        sut.loadTransformationsForHero(id: hero.id) { result in
+            expectation.fulfill()
+            
+            switch result {
+            case .success(let data):
+                transofrmationsResponse = data
+            case .failure(_):
+                XCTFail("Expected Syccess")
+            }
+        }
+        waitForExpectations(timeout: 5)
+        
+        //Then
+        XCTAssertEqual(transofrmationsResponse?.count, 14)
+        XCTAssertEqual(bdHeros.first?.transformations?.count, 14)
+    }
+    
+    func test_loadTransfromationWithHeroID_Error() throws {
+        // Given
+        sut = HeroDetailUseCase(apiProvider: ApiProviderErrorMock(), storeDataProvider: storeDataProvider)
+        let hero = try XCTUnwrap(MockData.apiHeroGoku())
+        var error: Error?
+        
+        //When
+        let expectation = expectation(description: "Error loading Transformations")
+        sut.loadTransformationsForHero(id: hero.id) { result in
+            expectation.fulfill()
+            switch result {
+                
+            case .success(_):
+                XCTFail("Expected error")
+            case .failure(let errorResponse):
+                error = errorResponse
+            }
+        }
+        waitForExpectations(timeout: 5)
+        
+        //Then
+        XCTAssertNotNil(error)
+    }
 }

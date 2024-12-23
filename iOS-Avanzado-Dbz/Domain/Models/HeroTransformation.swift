@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Transformation: Hashable {
+struct HeroTransformation: Hashable {
     let id: String
     let name: String
     let photo: String

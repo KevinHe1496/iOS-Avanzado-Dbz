@@ -9,7 +9,7 @@ import Foundation
 
 protocol HeroDetailUseCaseProtocol {
     func loadLocationsForHero(id: String, completion: @escaping (Result<[HeroLocation], GAError>)-> Void)
-    func loadTransformationsForHero(id: String, completion: @escaping (Result<[Transformation], GAError>) -> Void)
+    func loadTransformationsForHero(id: String, completion: @escaping (Result<[HeroTransformation], GAError>) -> Void)
     
 }
 
@@ -52,7 +52,7 @@ class HeroDetailUseCase: HeroDetailUseCaseProtocol {
         
     }
     
-    func loadTransformationsForHero(id: String, completion: @escaping (Result<[Transformation], GAError>) -> Void) {
+    func loadTransformationsForHero(id: String, completion: @escaping (Result<[HeroTransformation], GAError>) -> Void) {
         guard let hero = self.getHeroWith(id: id) else {
             debugPrint("Hero with id \(id) not found")
             completion(.failure(.heroNotFound(idHero: id)))
@@ -66,14 +66,14 @@ class HeroDetailUseCase: HeroDetailUseCaseProtocol {
                 case .success(let transformation):
                     self?.storeDataProvider.add(transformations: transformation)
                     let bdTransformations = hero.transformations ?? []
-                    let domainTransformations = bdTransformations.map({Transformation(moTransformation: $0)})
+                    let domainTransformations = bdTransformations.map({HeroTransformation(moTransformation: $0)})
                     completion(.success(domainTransformations))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
         } else {
-            let domainTransformations = bdTransformation.map({Transformation(moTransformation: $0)})
+            let domainTransformations = bdTransformation.map({HeroTransformation(moTransformation: $0)})
             completion(.success(domainTransformations))
         }
     }
