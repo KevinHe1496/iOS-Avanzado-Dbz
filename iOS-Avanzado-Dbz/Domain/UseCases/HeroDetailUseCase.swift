@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HeroDetailUseCaseProtocol {
-    func loadLocationsForHero(id: String, completion: @escaping (Result<[Location], GAError>)-> Void)
+    func loadLocationsForHero(id: String, completion: @escaping (Result<[HeroLocation], GAError>)-> Void)
     func loadTransformationsForHero(id: String, completion: @escaping (Result<[Transformation], GAError>) -> Void)
     
 }
@@ -23,7 +23,7 @@ class HeroDetailUseCase: HeroDetailUseCaseProtocol {
         self.storeDataProvider = storeDataProvider
     }
     
-    func loadLocationsForHero(id: String, completion: @escaping (Result<[Location], GAError>) -> Void) {
+    func loadLocationsForHero(id: String, completion: @escaping (Result<[HeroLocation], GAError>) -> Void) {
         guard let hero = self.getHeroWith(id: id) else {
             debugPrint("Hero with id \(id) not found")
             completion(.failure(.heroNotFound(idHero: id)))
@@ -35,16 +35,18 @@ class HeroDetailUseCase: HeroDetailUseCaseProtocol {
                 switch result{
                     
                 case .success(let locations):
-                    self?.storeDataProvider.add(locations: locations)
-                    let bdLocations = hero.locations ?? []
-                    let domainLocations = bdLocations.map({Location(moLocation: $0)})
-                    completion(.success(domainLocations))
+                    DispatchQueue.main.async {
+                        self?.storeDataProvider.add(locations: locations)
+                        let bdLocations = hero.locations ?? []
+                        let domainLocations = bdLocations.map({HeroLocation(moLocation: $0)})
+                        completion(.success(domainLocations))
+                    }
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
         } else {
-            let domainLocations = bdLocations.map({Location(moLocation: $0)})
+            let domainLocations = bdLocations.map({HeroLocation(moLocation: $0)})
             completion(.success(domainLocations))
         }
         

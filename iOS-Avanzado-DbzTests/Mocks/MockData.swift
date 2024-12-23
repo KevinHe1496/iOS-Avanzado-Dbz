@@ -77,5 +77,12 @@ class MockData {
         }
     }
     
+    static func apiHeroGoku() throws -> ApiHero {
+        guard let goku = try self.mockHeroes().first(where: {$0.id == "D13A40E5-4418-4223-9CE6-D2F9A28EBE94"}) else {
+            throw GAError.dataNoReveiced
+        }
+        return goku
+    }
+    
     
 }

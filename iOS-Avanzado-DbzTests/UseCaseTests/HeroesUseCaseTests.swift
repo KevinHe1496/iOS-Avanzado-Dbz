@@ -8,6 +8,7 @@
 
 @testable import iOS_Avanzado_Dbz
 import XCTest
+import CoreData
 
 final class HeroesUseCaseTests: XCTestCase {
     

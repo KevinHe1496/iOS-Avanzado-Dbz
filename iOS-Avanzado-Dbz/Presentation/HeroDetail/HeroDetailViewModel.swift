@@ -16,7 +16,7 @@ enum StatusHeroDetail {
 class HeroDetailViewModel {
     
     let hero: Hero
-    private var heroLocations: [Location] = []
+    private var heroLocations: [HeroLocation] = []
     var heroTransformations: [Transformation] = []
     private var useCase: HeroDetailUseCaseProtocol
     var status: Binding<StatusHeroDetail> = Binding(.none)

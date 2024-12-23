@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct Location {
+struct HeroLocation {
     let id: String
     let date: String
     let latitude: String
@@ -23,7 +23,7 @@ struct Location {
 }
 
 
-extension Location {
+extension HeroLocation {
     var coordinate: CLLocationCoordinate2D? {
         guard let latitude = Double(self.latitude),
               let longitude = Double(self.longitude),
