@@ -26,7 +26,7 @@ final class HeroesListViewModel {
         self.useCase = useCase
     }
     
-    func loadData(filter: String?) {
+    func loadData(filter: String? = nil) {
         var predicate: NSPredicate?
         if let filter {
             predicate = NSPredicate(format: "name CONTAINS[cd] %@", filter)
