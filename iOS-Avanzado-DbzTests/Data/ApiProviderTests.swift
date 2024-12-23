@@ -205,7 +205,7 @@ class ApiProviderTests: XCTestCase {
 
         // Then
         wait(for: [expectation], timeout: 1)
-        XCTAssertEqual(transformationResponse.count, 2)
+        XCTAssertEqual(transformationResponse.count, 14)
         let transformationReceived = transformationResponse.first
         XCTAssertEqual(transformationReceived?.id, expectedTransformation.id)
         XCTAssertEqual(transformationReceived?.name, expectedTransformation.name)

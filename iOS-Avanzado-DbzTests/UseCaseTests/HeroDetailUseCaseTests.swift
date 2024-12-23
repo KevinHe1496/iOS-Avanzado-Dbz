@@ -65,7 +65,7 @@ final class HeroDetailUseCaseTests: XCTestCase {
             expectation.fulfill()
             
             switch result {
-            case .success(let data):
+            case .success(_):
                 XCTFail("Expected Error")
             case .failure(let errorResponse):
                 error = errorResponse
