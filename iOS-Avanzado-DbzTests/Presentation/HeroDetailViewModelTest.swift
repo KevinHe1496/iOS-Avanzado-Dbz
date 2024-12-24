@@ -118,22 +118,20 @@ final class HeroDetailViewModelTest: XCTestCase {
         
     }
     
-    //TODO: Arreglar este test
-    
-    
     func test_loadData_Transformations() {
         //Given
         var transformations: [HeroTransformation]?
         let expectation = expectation(description: "Load Transformations")
         var didFulfill = false
         
-        sut.status.bind { status in
+        sut.status.bind { [weak self] status in
             guard !didFulfill else { return }
             switch status {
                 
             case .loading:
                 break
             case .locationUpdated:
+                transformations = self?.sut.heroTransformations
                 didFulfill = true
                 expectation.fulfill()
             case .error(_):
@@ -146,7 +144,7 @@ final class HeroDetailViewModelTest: XCTestCase {
         sut.loadData()
         //Then
         wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(transformations?.count, nil)
+        XCTAssertEqual(transformations?.count, 14)
     }
     
     func test_loadData_TransformationsError() {

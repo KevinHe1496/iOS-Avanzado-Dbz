@@ -45,35 +45,46 @@ class TransformationDetailController: UIViewController {
             switch status {
                 
             case .loading:
-                self?.spinner.startAnimating()
-                self?.transformationDescriptionLabel.isHidden = true
-                self?.transformationImageView.isHidden = true
-                self?.transformationTitleLabel.isHidden = true
-                
+                self?.renderLoading()
             case .locationUpdated:
-                self?.spinner.stopAnimating()
-                self?.transformationDescriptionLabel.isHidden = false
-                self?.transformationImageView.isHidden = false
-                self?.transformationTitleLabel.isHidden = false
-                
-                self?.transformationTitleLabel.text = self?.viewModel.transformation.name
-                self?.transformationDescriptionLabel.text = self?.viewModel.transformation.info
-                
-                if let url = URL(string: self?.viewModel.transformation.photo ?? "") {
-                    self?.transformationImageView.setImage(url: url)
-                } else {
-                    self?.transformationImageView.image = UIImage(named: "placeholderImage")
-                }
-                self?.viewModel.transformationStatus.value = .none
-                
+                self?.renderLocationUpdated()
             case .error(let error):
-                let alert = UIAlertController(title: "Drabon Ball Z", message: error, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self?.present(alert, animated: true)
+                self?.renderError(error: error)
             case .none:
                 break
             }
         }
+    }
+    
+    private func renderLoading() {
+        self.spinner.startAnimating()
+        self.transformationDescriptionLabel.isHidden = true
+        self.transformationImageView.isHidden = true
+        self.transformationTitleLabel.isHidden = true
+    }
+    
+    private func renderLocationUpdated() {
+        self.spinner.stopAnimating()
+        self.transformationDescriptionLabel.isHidden = false
+        self.transformationImageView.isHidden = false
+        self.transformationTitleLabel.isHidden = false
+        
+        self.transformationTitleLabel.text = self.viewModel.transformation.name
+        self.transformationDescriptionLabel.text = self.viewModel.transformation.info
+        
+        if let url = URL(string: self.viewModel.transformation.photo ?? "") {
+            self.transformationImageView.setImage(url: url)
+        } else {
+            self.transformationImageView.image = UIImage(named: "placeholderImage")
+        }
+        self.viewModel.transformationStatus.value = .none
+        
+    }
+    
+    private func renderError(error: String) {
+        let alert = UIAlertController(title: "Drabon Ball Z", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
     
 }
