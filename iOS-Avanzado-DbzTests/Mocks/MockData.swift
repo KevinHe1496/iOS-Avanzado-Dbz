@@ -22,13 +22,12 @@ class MockData {
     }
     
     static func mockHeroes() throws -> [ApiHero] {
-        do {
-            let data = try self.loadHeroesData()
-            let heroes = try JSONDecoder().decode([ApiHero].self, from: data)
-            return heroes
-        } catch {
-            throw error
+        guard let data = try? self.loadHeroesData(),
+              let heroes = try? JSONDecoder().decode([ApiHero].self, from: data) else {
+            return []
         }
+            return heroes
+
     }
     
     
@@ -45,13 +44,12 @@ class MockData {
     }
     
     static func mockLocations() throws -> [ApiLocation] {
-        do {
-            let data = try self.loadLocationsData()
-            let locations = try JSONDecoder().decode([ApiLocation].self, from: data)
+        
+            guard let data = try? self.loadLocationsData(),
+                  let locations = try? JSONDecoder().decode([ApiLocation].self, from: data) else {
+                return []
+            }
             return locations
-        } catch {
-            throw error
-        }
     }
     
     
@@ -68,13 +66,13 @@ class MockData {
     }
     
     static func mockTransformation() throws -> [ApiTransformation] {
-        do {
-            let data = try self.loadTransformationsData()
-            let transformations = try JSONDecoder().decode([ApiTransformation].self, from: data)
-            return transformations
-        } catch {
-            throw error
+       
+        guard let data = try? self.loadTransformationsData(),
+              let transformations = try? JSONDecoder().decode([ApiTransformation].self, from: data) else {
+            return []
         }
+            return transformations
+     
     }
     
     static func apiHeroGoku() throws -> ApiHero {

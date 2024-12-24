@@ -164,7 +164,7 @@ extension HeroDetailController: MKMapViewDelegate {
             
             cell.transformationLabel.text = transformation.name
             
-            if let url = URL(string: transformation.photo) {
+            if let url = URL(string: transformation.photo!) {
                 cell.transformationImageView.setImage(url: url)
             } else {
                 cell.transformationImageView.image = UIImage(named: "placeholderImage")

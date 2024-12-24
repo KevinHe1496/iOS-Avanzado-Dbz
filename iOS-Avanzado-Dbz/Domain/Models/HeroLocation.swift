@@ -10,13 +10,21 @@ import MapKit
 
 struct HeroLocation {
     let id: String
-    let date: String
+    let date: String?
     let latitude: String
     let longitude: String
     
+    
+    init(id: String, latitude: String, longitude: String, date: String?) {
+        self.id = id
+        self.latitude = latitude
+        self.longitude = longitude
+        self.date = date
+    }
+    
     init(moLocation: MOLocation) {
         self.id = moLocation.id ?? ""
-        self.date = moLocation.date ?? ""
+        self.date = moLocation.date
         self.latitude = moLocation.latitude ?? ""
         self.longitude = moLocation.longitude ?? ""
     }
