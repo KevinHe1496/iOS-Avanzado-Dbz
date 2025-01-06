@@ -9,14 +9,17 @@ import UIKit
 
 class TransformationDetailController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var transformationDescriptionLabel: UILabel!
     @IBOutlet weak var transformationTitleLabel: UILabel!
     @IBOutlet weak var transformationImageView: UIImageView!
     
+    // MARK: - Model
     private let viewModel: TransformationDetailViewModel
     
+    //MARK: - Initializers
     init(viewModel: TransformationDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: TransformationDetailController.self), bundle: Bundle(for: type(of: self)))
@@ -26,6 +29,7 @@ class TransformationDetailController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setBinding()

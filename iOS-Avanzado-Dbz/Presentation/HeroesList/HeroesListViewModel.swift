@@ -13,8 +13,6 @@ enum HeroesListState{
     case none
 }
 
-
-
 final class HeroesListViewModel {
  
     

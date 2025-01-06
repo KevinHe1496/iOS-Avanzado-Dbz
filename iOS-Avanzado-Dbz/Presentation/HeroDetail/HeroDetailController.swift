@@ -15,22 +15,22 @@ enum SectionsTransformation {
 
 class HeroDetailController: UIViewController {
     
+    // MARK: - Model
     private let viewModel: HeroDetailViewModel
     private var locationManager: CLLocationManager = CLLocationManager()
     private var dataSource: UICollectionViewDiffableDataSource<SectionsTransformation, HeroTransformation>?
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
+    //MARK: - Initializers
     init(viewModel: HeroDetailViewModel) {
         self.viewModel = viewModel
         
         super.init(nibName: String(describing: HeroDetailController.self), bundle: Bundle(for: type(of: self)))
     }
     
+    //MARK: - Outlet
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var heroNameLabel: UILabel!
-    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var heroDescriptionLabel: UILabel!
     
@@ -46,6 +46,7 @@ class HeroDetailController: UIViewController {
         
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configuraCollectionView()
