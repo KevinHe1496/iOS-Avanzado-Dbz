@@ -1,53 +1,72 @@
 # Dragon Ball App
 
-**Dragon Ball App** es una aplicación iOS desarrollada en Swift, diseñada para mostrar a los personajes de Dragon Ball junto con sus descripciones y transformaciones. El proyecto incluye un sistema de **Login** para la autenticación de usuarios y utiliza **Core Data** para el almacenamiento local. Además, integra una **API REST** para obtener los datos de los personajes y utiliza **MapKit** y **CoreLocation** para mostrar la ubicación de cada personaje en el mapa. Se han incluido **Unit Testing** para garantizar la calidad del código.
+**Dragon Ball App** is an iOS application developed in Swift, designed to display Dragon Ball characters along with their descriptions and transformations.  
+The project includes a **Login** system for user authentication and uses **Core Data** for local storage.  
+It also integrates a **REST API** to fetch character data and leverages **MapKit** and **CoreLocation** to display each character’s location on an interactive map.  
+**Unit Testing** is implemented to ensure code quality and reliability.
 
-### Implementación del Proyecto
+---
 
-Se ha implementado un flujo de trabajo que permite a los usuarios acceder a un listado de personajes y ver sus detalles. Al seleccionar una transformación, se puede acceder a información más específica sobre ella. También se puede visualizar la ubicación del personaje utilizando mapas interactivos.
+### Project Implementation
+
+The app provides a workflow that allows users to browse a list of characters and view their details.  
+When selecting a transformation, users can access more specific information about it.  
+Additionally, the app enables viewing each character’s location through interactive maps.
 
 ![Screens](https://i.postimg.cc/nr0jmPGB/Screens.png)
 
-## Características
+---
 
-- **Login:** Un sistema de autenticación para acceder a la aplicación.
-- **Core Data:** Almacenamiento local de información de personajes y transformaciones.
-- **API REST:** Interacción con una API para obtener información sobre los personajes.
-- **Collection View:** Presentación de personajes de manera visual y organizada.
-- **MapKit:** Integración de mapas para mostrar localizaciones.
-- **CoreLocation:** Uso de la localización del dispositivo.
-- **Keychain:** Almacenamiento seguro del token de acceso.
-- **Testing:** Pruebas unitarias y de integración para asegurar la funcionalidad.
+## Features
 
-## Tecnologías Utilizadas
+- **Login:** Authentication system to access the app.
+- **Core Data:** Local storage for characters and transformations.
+- **REST API:** Fetches character data from an external server.
+- **Collection View:** Displays characters in an organized and visually appealing way.
+- **MapKit:** Integrates maps to display locations.
+- **CoreLocation:** Uses the device’s location services.
+- **Keychain:** Secure storage for the access token.
+- **Testing:** Unit and integration tests to ensure functionality.
 
-- **Swift:** Lenguaje principal para el desarrollo de la app.
-- **UIKit:** Para el manejo de la interfaz y componentes visuales.
-- **Core Data:** Para la gestión de datos locales.
-- **API REST:** Obtención de datos desde un servidor externo.
-- **XCTest:** Framework utilizado para implementar pruebas unitarias y de integración.
+---
 
-## Instalación
+## Technologies Used
 
-1. Clona este repositorio.
-2. Abre el proyecto en Xcode.
-3. Ejecuta el proyecto en un simulador o dispositivo físico.
+- **Swift:** Main programming language for app development.
+- **UIKit:** For managing the UI and visual components.
+- **Core Data:** For managing local data persistence.
+- **REST API:** For retrieving data from an external server.
+- **XCTest:** Framework used to implement unit and integration tests.
 
-## Uso
+---
 
-1. Al iniciar la aplicación, primero se mostrará una pantalla de **login**.
-2. Después de iniciar sesión, podrás ver una lista de personajes de Dragon Ball.
-3. Selecciona un personaje para ver una descripción, localización y sus transformaciones.
-4. Al hacer clic en una transformación, podrás ver el detalle de dicha transformación.
+## Installation
 
-## Pruebas
+1. Clone this repository.  
+2. Open the project in Xcode.  
+3. Run the project on a simulator or a physical device.
 
-Para ejecutar las pruebas del proyecto, sigue estos pasos:
+---
 
-1. Abre el proyecto en Xcode.
-2. Presiona `Cmd + U` para ejecutar las pruebas.
+## Usage
 
-## Conecta conmigo
+1. Upon launching the app, a **login** screen will be displayed.  
+2. After logging in, you will see a list of Dragon Ball characters.  
+3. Select a character to view their description, location, and transformations.  
+4. Tap a transformation to view detailed information about it.
+
+---
+
+## Testing
+
+To run the project’s tests:
+
+1. Open the project in Xcode.  
+2. Press `Cmd + U` to execute the tests.
+
+---
+
+## Connect with Me
 
 - [LinkedIn](https://www.linkedin.com/in/kevin-heredia-esparza/)
 - [GitHub](https://github.com/KevinHe1496)
